@@ -1,4 +1,4 @@
-package com.littlepetshop.mvc.models;
+/*** package com.littlepetshop.mvc.models;
 
 public class CatalogoItem {
 
@@ -35,4 +35,5 @@ public class CatalogoItem {
     public void setValoraciones(int valoraciones) {
         this.valoraciones = valoraciones;
     }
-}
+    
+} */
