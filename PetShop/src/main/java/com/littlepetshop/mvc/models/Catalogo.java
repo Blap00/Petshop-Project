@@ -1,5 +1,5 @@
 package com.littlepetshop.mvc.models;
-/** abers si se pqwduedeee a*/
+/** abers si seXDa*/
 public class Catalogo {
 
         public Catalogo(String nombre_producto, String descripcion, int valoraciones) {
