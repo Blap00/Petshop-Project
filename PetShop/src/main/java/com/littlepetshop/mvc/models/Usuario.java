@@ -24,7 +24,7 @@ public class Usuario {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	
+	//testing git
 
 	@Size(min = 4, message = "El nombre del usuario debe contener sobre 4 digitos")
 	@Size(max = 45, message = "El nombre del usuario debe contener menos de 45 digitos")
