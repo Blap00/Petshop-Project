@@ -46,4 +46,6 @@ public class CategoriaProduct {
     public String toString() {
         return nombreCategoria;
     }
+    
+    //deberia estar listo
 }
