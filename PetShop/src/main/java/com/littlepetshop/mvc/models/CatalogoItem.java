@@ -36,4 +36,4 @@ public class CatalogoItem {
         this.valoraciones = valoraciones;
     }
     
-} */
+} aber si funca el commit */
