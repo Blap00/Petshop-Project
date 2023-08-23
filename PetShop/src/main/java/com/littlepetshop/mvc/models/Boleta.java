@@ -34,7 +34,7 @@ public class Boleta {
 	
 //	@OneToMany(mappedBy="product")	
 //	private String productId;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "usuario_id")
 	private Usuario usuario;
