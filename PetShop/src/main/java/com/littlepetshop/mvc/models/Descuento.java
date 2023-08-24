@@ -19,48 +19,57 @@ public class Descuento {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	private String codigo;
 	private Integer porcentaje;
-	/* FALTARON DECLARAR FORMATO Y TIPO COLUMNA
-	 * *ERROR
-	 * 	private Date createdAt;
-	 *  private Date updatedAt;
-	 *  */
+	/*
+	 * FALTARON DECLARAR FORMATO Y TIPO COLUMNA *ERROR private Date createdAt;
+	 * private Date updatedAt;
+	 */
 
 	@Column(updatable = false)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date createdAt;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date updatedAt;
-	
+
 	@PrePersist
-    protected void onCreate(){
-        this.createdAt = new Date();
-    }
-    @PreUpdate
-    protected void onUpdate(){
-        this.updatedAt = new Date();
-    }
-    
+	protected void onCreate() {
+		this.createdAt = new Date();
+	}
+
+	@PreUpdate
+	protected void onUpdate() {
+		this.updatedAt = new Date();
+	}
+
 //constructores
 	public Descuento() {
 	}
 
-	public Descuento(Long id, Integer porcentaje, Date createdAt, Date updatedAt) {
+	public Descuento(Long id, String codigo, Integer porcentaje, Date createdAt, Date updatedAt) {
 		super();
 		this.id = id;
+		this.codigo = codigo;
 		this.porcentaje = porcentaje;
 		this.createdAt = createdAt;
 		this.updatedAt = updatedAt;
 	}
 
-//getter y setters
-
+	// getter y setters
 	public Long getId() {
 		return id;
 	}
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public String getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
 	}
 
 	public Integer getPorcentaje() {
@@ -86,4 +95,5 @@ public class Descuento {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
+
 }
