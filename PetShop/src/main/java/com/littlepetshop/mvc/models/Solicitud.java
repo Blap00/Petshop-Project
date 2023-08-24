@@ -1,5 +1,8 @@
 package com.littlepetshop.mvc.models;
 
+import java.util.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
 
 import jakarta.persistence.Column;
@@ -10,6 +13,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.validation.constraints.Email;
@@ -39,6 +44,21 @@ public class Solicitud {
 	
 	@Transient
 	private MultipartFile archivoAdjunto; // Campo para el archivo adjunto
+	
+	@Column(updatable = false)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date createdAt;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date updatedAt;
+	
+	@PrePersist
+    protected void onCreate(){
+        this.createdAt = new Date();
+    }
+    @PreUpdate
+    protected void onUpdate(){
+        this.updatedAt = new Date();
+    }
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "usuario_id")

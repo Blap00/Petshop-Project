@@ -9,4 +9,7 @@ import com.littlepetshop.mvc.models.Usuario;
 @Repository
 public interface UserRepository extends CrudRepository <Usuario,Long>{
 
+	@Query("SELECT COUNT(u) FROM Usuario u WHERE u.admin = true")
+    long countAdmins();
+	
 }
