@@ -3,6 +3,7 @@ package com.littlepetshop.mvc.services;
 import java.util.List;
 import java.util.Optional;
 
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,11 +27,16 @@ public class UserService {
         return usuarioRepository.findById(id);
     }
 
-    public Usuario saveUsuario(Usuario usuario) {
-        return usuarioRepository.save(usuario);
-    }
-
     public void deleteUsuario(Long id) {
         usuarioRepository.deleteById(id);
+    }
+    
+    public Usuario registerUser(Usuario usuario) {
+    	if (usuarioRepository.countAdmins() == 0) {
+            usuario.setAdmin(true);
+        }
+        String hashed = BCrypt.hashpw(usuario.getPassword(), BCrypt.gensalt());
+        usuario.setPassword(hashed);
+        return usuarioRepository.save(usuario);
     }
 }
