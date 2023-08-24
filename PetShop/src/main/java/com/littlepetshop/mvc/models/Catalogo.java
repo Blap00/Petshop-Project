@@ -1,16 +1,22 @@
 package com.littlepetshop.mvc.models;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
-
+import jakarta.persistence.Table;
+//ERROR FALTA DECLARAR ENTIDAD Y TABLA
+@Entity
+@Table(name="product")
 public class Catalogo {
 //ERRORES FALTARON DECLARAR VARIABLES
 	//FALTO FECHAS DE CREACION
@@ -24,6 +30,9 @@ public class Catalogo {
 	private String descripcion;
 	
 	private int valoraciones;
+	
+	@OneToMany(mappedBy = "catalogo")
+	private List<Boleta> boletas;
 	
 	@Column(updatable = false)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
