@@ -50,9 +50,6 @@ public class Usuario {
 
 	@OneToMany(mappedBy = "usuario")
 	private List<Boleta> boletas;
-//
-//	@OneToOne
-//	private List<CatalogoProduct> catalogoproduct;
 
 	@OneToMany(mappedBy = "usuario")
     private List<Solicitud> solicitudes;
@@ -125,21 +122,13 @@ public class Usuario {
 		this.admin = admin;
 	}
 
-//	public List<Boleta> getBoleta() {
-//		return boleta;
-//	}
-//
-//	public void setBoleta(List<Boleta> boleta) {
-//		this.boleta = boleta;
-//	}
-//
-//	public List<CatalogoProduct> getCatalogoproduct() {
-//		return catalogoproduct;
-//	}
-//
-//	public void setCatalogoproduct(List<CatalogoProduct> catalogoproduct) {
-//		this.catalogoproduct = catalogoproduct;
-//	}
+	public List<Boleta> getBoleta() {
+		return boletas;
+	}
+
+	public void setBoleta(List<Boleta> boleta) {
+		this.boletas = boleta;
+	}
 
 	
 	

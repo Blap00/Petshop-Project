@@ -18,34 +18,35 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Entity
-@Table(name="boletas")
+@Table(name = "boletas")
 public class Boleta {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	@Size(min=3, message="El valor es muy bajo!")
+
+	@Size(min = 3, message = "El valor es muy bajo!")
 	@NotNull
 	private Integer priceProduct;
 
 	@Column(updatable = false)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date createdAt;
-	
+
 	@PrePersist
-    protected void onCreate(){
-        this.createdAt = new Date();
-    }
-	
-//	@OneToMany(mappedBy="product")	
-//	private String productId;
+	protected void onCreate() {
+		this.createdAt = new Date();
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "catalogo_id") // Use the appropriate column name for the foreign key
+	private Catalogo catalogo; // Use the appropriate entity class
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "usuario_id")
 	private Usuario usuario;
 
-	public Boleta(){
+	public Boleta() {
 	}
 
 	public Long getId() {
@@ -72,13 +73,13 @@ public class Boleta {
 		this.createdAt = createdAt;
 	}
 
-//	public String getProductId() {
-//		return productId;
-//	}
-//
-//	public void setProductId(String productId) {
-//		this.productId = productId;
-//	}
+	public Catalogo getCatalogo() {
+		return catalogo;
+	}
+
+	public void setCatalogo(Catalogo catalogo) {
+		this.catalogo = catalogo;
+	}
 
 	public Usuario getusuario() {
 		return usuario;
@@ -87,8 +88,13 @@ public class Boleta {
 	public void setusuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
-	
-	
-	
-	
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
 }

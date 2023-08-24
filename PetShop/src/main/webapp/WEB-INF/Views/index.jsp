@@ -39,35 +39,61 @@
 						role="button" data-bs-toggle="dropdown" aria-expanded="false">
 							Galeria De articulos </a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-							<!-- IMPLEMENTAR UN CICLO DE FOR CON CADA CATEGORIA DE ARTICULOS -->
-							<%
-							for (int i = 0; i <= -1; i++) {
-							%>
+							<%-- IMPLEMENTAR UN CICLO DE FOR CON CADA CATEGORIA DE ARTICULOS --%>
+							<%--
+							for (int i = 0; i < categorias.size(); i++) {
+								Categoria categoria = categorias.get(i);
+							--%>
 							<!-- ARREGLAR y poner tamaño de categorias -->
-							<li><a class="dropdown-item" href="/catalogo/${i}"></a></li>
-							<%
+							<li><a class="dropdown-item"
+								href="/catalogo/${categoria.id}">${categoria.nombre}</a></li>
+							<%--
 							}
-							%>
-							<li><a class="dropdown-item" href="/catalogo/1">Articulos
-									Caninos</a></li>
-							<li><a class="dropdown-item" href="{% url 'Felinos' %}">Articulos
-									Felinos</a></li>
-							<li><a class="dropdown-item" href="{% url 'Avess' %}">Articulos
-									de Aves</a></li>
-						</ul>
+							--%>
+						</ul></li>
 					<li class="nav-item"><a class="nav-link" href="/quienes-somos">Quienes
-							somos</a> <!-- jinja --></li>
+							somos</a></li>
 					<li class="nav-item"><a class="nav-link" aria-current="page"
 						href="/catalogo">Catalogo</a></li>
 					<li class="nav-item"><a class="nav-link" aria-current="page"
 						href="/seguimiento">Seguimiento</a></li>
 				</ul>
+				<div>
+					<%
+					if (!(Boolean) request.getAttribute("estaLogueado")) {
+					%>
+					<button class="btn btn-light btn-outline-success"
+						data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample">Iniciar
+						Sesion</button>
+					<%
+					} else {
+					%>
+					<li class="d-flex nav-item dropdown"><a
+						class="nav-link btn btn-light dropdown-toggle text-black" href=""
+						id="userDropdownMenu" role="button" data-bs-toggle="dropdown"
+						aria-expanded="false"> Bienvenido ${((Usuario) session.getAttribute("usuarioLogueado")).getUsername() | capfirst}
+					</a>
+						<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+							<li><a class="dropdown-item" href="{% url 'Perfil' %}">Mi
+									perfil</a></li>
+							<li><a class="dropdown-item"
+								href="{% url 'Revisar Solicitudes' %}">Revisar solicitudes</a></li>
+							<li><a class="dropdown-item" id="logout">Cerrar Sesion</a></li>
+						</ul></li>
+					<%
+					}
+					%>
+				</div>
 			</div>
+
 		</nav>
 	</header>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-		crossorigin="anonymous"></script>
+<body>
+
+</body>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+	crossorigin="anonymous"></script>
 </body>
 </html>
