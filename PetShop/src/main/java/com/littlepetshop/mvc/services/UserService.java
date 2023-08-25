@@ -47,4 +47,9 @@ public class UserService {
 	    Usuario user = usuarioRepository.findByUsername(username);
 	    return user != null && BCrypt.checkpw(password, user.getPassword());
 	}
+    
+    public boolean authenticateRegister(String username, String password, String passwordConf) {
+	    Usuario user = usuarioRepository.findByUsername(username);
+	    return user != null && password==passwordConf;
+	}
 }

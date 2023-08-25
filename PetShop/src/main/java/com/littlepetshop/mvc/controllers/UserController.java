@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.littlepetshop.mvc.models.Usuario;
 import com.littlepetshop.mvc.services.UserService;
+import com.littlepetshop.mvc.validators.UsuarioValidator;
 
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
@@ -20,9 +21,11 @@ import jakarta.validation.Valid;
 public class UserController {
 	
 	private final UserService userService ;
+	private final UsuarioValidator userValidator;
 	
-	public UserController(UserService userService) {
-		this.userService = userService;	
+	public UserController(UserService userService, UsuarioValidator userValidator) {
+		this.userService = userService;
+		this.userValidator = userValidator;	
 	}
 	
 //	@GetMapping("/")
@@ -77,18 +80,25 @@ public class UserController {
 	}
 //  <-------REGISTRO DE USUARIO------->
 	@GetMapping("/register")
-	public String indexRegister() {
+	public String indexRegister(@ModelAttribute("usuario") Usuario usuario) {
+		
 		return "register.jsp";
+		
 	}
 	@PostMapping("/register/add")
-	public String indexRegPost(@Valid @ModelAttribute("usuario")Usuario usuario, BindingResult result) {
+	public String indexRegPost(@Valid @ModelAttribute("usuario")Usuario usuario, BindingResult result, HttpSession session) {
+		userValidator.validate(usuario, result);
 		if(result.hasErrors()) {
 			return "redirect:/register";
 		}
 		else {
-			return "redirect:/login";	
+			Usuario u = userService.registerUser(usuario);
+			session.setAttribute("userId", u.getId());
+			return "redirect:/login-in";	
 		}
 	}
+	
+	
 //	<-------------LOGOUT--------------->
 	@GetMapping("/logout-in")
 	public String redirectIndex(HttpSession session) {
