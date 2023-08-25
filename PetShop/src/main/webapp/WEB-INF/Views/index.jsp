@@ -58,41 +58,24 @@
 					<li class="nav-item"><a class="nav-link" aria-current="page"
 						href="/seguimiento">Seguimiento</a></li>
 				</ul>
-				<div>
+				<div class="me-3">
 					<%
 					if (!(Boolean) request.getAttribute("estaLogueado")) {
 					%>
-<<<<<<< Updated upstream
-					<button class="btn btn-light btn-outline-success"
-						data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample">Iniciar
-						Sesion</button>
-=======
 					<a class="btn btn-light btn-outline-success" href="/login-in">Iniciar
 						Sesión</a>
->>>>>>> Stashed changes
 					<%
 					} else {
 					%>
 					<li class="d-flex nav-item dropdown"><a
 						class="nav-link btn btn-light dropdown-toggle text-black" href=""
 						id="userDropdownMenu" role="button" data-bs-toggle="dropdown"
-<<<<<<< Updated upstream
-						aria-expanded="false"> Bienvenido ${((Usuario) session.getAttribute("usuarioLogueado")).getUsername() | capfirst}
-					</a>
-						<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-							<li><a class="dropdown-item" href="{% url 'Perfil' %}">Mi
-									perfil</a></li>
-							<li><a class="dropdown-item"
-								href="{% url 'Revisar Solicitudes' %}">Revisar solicitudes</a></li>
-							<li><a class="dropdown-item" id="logout">Cerrar Sesion</a></li>
-=======
 						aria-expanded="false"> Bienvenido ${user.username}</a>
 						<ul class="dropdown-menu" aria-labelledby="userDropdownMenu">
 							<!-- ... Opciones de menú ... -->
 							<li><a class="dropdown-item" href="/logout-in">Salir</a></li>
 							<li><a class="dropdown-item" href="#">Modificar Usuario</a></li>
 							<li><a class="dropdown-item" href="#">Configuración</a></li>
->>>>>>> Stashed changes
 						</ul></li>
 					<%
 					}
@@ -102,15 +85,6 @@
 
 		</nav>
 	</header>
-<<<<<<< Updated upstream
-<body>
-
-</body>
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-	crossorigin="anonymous"></script>
-=======
 	<main>
 		<div class="container-fluid">
 			<div class="carousel slide carousel-fade" data-bs-ride="carousel"
@@ -248,6 +222,5 @@
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 		crossorigin="anonymous"></script>
->>>>>>> Stashed changes
 </body>
 </html>

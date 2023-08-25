@@ -1,6 +1,6 @@
 package com.littlepetshop.mvc.controllers;
 
-import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.littlepetshop.mvc.models.CategoriaProduct;
 import com.littlepetshop.mvc.models.Usuario;
+import com.littlepetshop.mvc.services.UserService;
 
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
@@ -19,15 +19,6 @@ import jakarta.validation.Valid;
 @Controller
 public class UserController {
 	
-<<<<<<< Updated upstream
-	@GetMapping("/")
-	public String index(Model model, HttpSession session) {
-//		List<CategoriaProduct> categFindAll= categoriaRepository.findall(); //FALTA EL REPOSITORIO AUN
-		boolean estaLogueado = (session.getAttribute("usuarioLogueado") != null);
-        model.addAttribute("estaLogueado", estaLogueado);
-		model.addAttribute("categorias", categFindAll);
-		return "index.jsp";
-=======
 	private final UserService userService ;
 	
 	public UserController(UserService userService) {
@@ -62,7 +53,6 @@ public class UserController {
 	    
 	    model.addAttribute("estaLogueado", estaLogueado);
 	    return "index.jsp";
->>>>>>> Stashed changes
 	}
 
 //	<-------INICIO DE SESION------->
