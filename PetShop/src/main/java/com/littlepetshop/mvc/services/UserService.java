@@ -39,4 +39,12 @@ public class UserService {
         usuario.setPassword(hashed);
         return usuarioRepository.save(usuario);
     }
+    public Usuario findByUsername(String username) {
+		return usuarioRepository.findByUsername(username);
+	}
+    
+    public boolean authenticateUser(String username, String password) {
+	    Usuario user = usuarioRepository.findByUsername(username);
+	    return user != null && BCrypt.checkpw(password, user.getPassword());
+	}
 }
