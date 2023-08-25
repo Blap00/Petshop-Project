@@ -10,6 +10,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
@@ -87,7 +89,11 @@ public class Catalogo {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
-
+     /*  No me deja usar @OneToMany Chatgpt me dijo que hiciera esto y es lo unico que me funcionó  */
 	
-
+	@OneToMany(mappedBy = "categoria_product_id")
+	private CategoriaProduct categoria_product; //CATALOGO
+	
+	
+	
 }

@@ -2,6 +2,7 @@ package com.littlepetshop.mvc.models;
 
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -10,6 +11,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
@@ -19,8 +22,7 @@ import jakarta.persistence.Table;
 public class CategoriaProduct {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_categoria")
-    private Integer idCategoria;
+    private Long id;
 
     @Column(name = "nombre_categoria", unique = true, nullable = false)
     private String nombreCategoria;
@@ -51,15 +53,33 @@ public class CategoriaProduct {
         this.nombreCategoria = nombreCategoria;
     }
 
-    public Integer getIdCategoria() {
-        return idCategoria;
-    }
+    public Date getCreatedAt() {
+		return createdAt;
+	}
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
+	public Date getUpdatedAt() {
+		return updatedAt;
+	}
+	public void setUpdatedAt(Date updatedAt) {
+		this.updatedAt = updatedAt;
+	}
+	public List<Catalogo> getProduct() {
+		return product;
+	}
+	public void setProduct(List<Catalogo> product) {
+		this.product = product;
+	}
+	
 
-    public void setIdCategoria(Integer idCategoria) {
-        this.idCategoria = idCategoria;
-    }
-
-    public String getNombreCategoria() {
+    public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public String getNombreCategoria() {
         return nombreCategoria;
     }
 
@@ -67,8 +87,11 @@ public class CategoriaProduct {
         this.nombreCategoria = nombreCategoria;
     }
 
-    @Override
-    public String toString() {
-        return nombreCategoria;
-    }
-}
+    
+    /* ME SALTA ERROR AYUDA tomyhertz */
+
+    
+    @ManyToOne
+    @JoinColumn(name ="product_id")
+    private List<Catalogo> product;
+	} 

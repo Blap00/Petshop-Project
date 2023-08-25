@@ -23,7 +23,7 @@ public class UserController {
 //		List<CategoriaProduct> categFindAll= categoriaRepository.findall(); //FALTA EL REPOSITORIO AUN
 		boolean estaLogueado = (session.getAttribute("usuarioLogueado") != null);
         model.addAttribute("estaLogueado", estaLogueado);
-		model.addAttribute("categorias", categFindAll);
+		/*model.addAttribute("categorias", categFindAll);*/
 		return "index.jsp";
 	}
 //	<-------INICIO DE SESION------->
