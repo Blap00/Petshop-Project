@@ -39,7 +39,7 @@ public class Usuario {
 	private String email;
 
 	@Size(min = 7, message = "La contraseña debe contener sobre 7 digitos")
-	@Size(max = 45, message = "La contraseña debe contener menos de 7 digitos")
+	@Size(max = 75, message = "La contraseña debe contener menos de 75 digitos")
 	@NotNull
 	private String password;
 	@Transient

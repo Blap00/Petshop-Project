@@ -13,6 +13,12 @@
 div ul li a{
 	font-size: 1.2rem;
 } 
+.footer{
+	background-color: #5495ca7d;
+}
+.form-login{
+	min-height: calc(88vh - 205px);
+}
 /*ANTIGUOS CSS*/
 
 #formComprar{
