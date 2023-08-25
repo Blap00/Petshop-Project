@@ -19,7 +19,7 @@ import jakarta.persistence.Table;
 //ERROR FALTA DECLARAR ENTIDAD Y TABLA
 @Entity
 @Table(name="product")
-public class Catalogo {
+public class Product {
 //ERRORES FALTARON DECLARAR VARIABLES
 	//FALTO FECHAS DE CREACION
 	
@@ -50,7 +50,7 @@ public class Catalogo {
     protected void onUpdate(){
         this.updatedAt = new Date();
     }
-	public Catalogo() {
+	public Product() {
 		//INTENTAR DECLARAR CATALOGO VACIO PARA SEGUIR ESTRUCTURA BEAN
 	}
 	public Long getId() {
@@ -91,8 +91,9 @@ public class Catalogo {
 	}
      /*  No me deja usar @OneToMany Chatgpt me dijo que hiciera esto y es lo unico que me funcionó  */
 	
-	@OneToMany(mappedBy = "categoria_product_id")
-	private CategoriaProduct categoria_product; //CATALOGO
+	@ManyToOne
+    @JoinColumn(name = "categoria_id")
+    private Categoria categoria;
 	
 	
 	

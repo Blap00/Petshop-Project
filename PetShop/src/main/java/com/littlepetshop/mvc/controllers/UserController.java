@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.littlepetshop.mvc.models.CategoriaProduct;
+import com.littlepetshop.mvc.models.Categoria;
 import com.littlepetshop.mvc.models.Usuario;
 
 import jakarta.servlet.http.HttpSession;

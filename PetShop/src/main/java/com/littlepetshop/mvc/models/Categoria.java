@@ -10,15 +10,15 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "categoria_product")
-public class CategoriaProduct {
+@Table(name = "categoria")
+public class Categoria {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -45,10 +45,10 @@ public class CategoriaProduct {
         this.updatedAt = new Date();
     }
     
-    public CategoriaProduct() {
+    public Categoria() {
     }
 
-    public CategoriaProduct(String nombreCategoria) {
+    public Categoria(String nombreCategoria) {
         this.nombreCategoria = nombreCategoria;
     }
 
@@ -64,10 +64,10 @@ public class CategoriaProduct {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
-	public List<Catalogo> getProduct() {
+	public List<Product> getProduct() {
 		return product;
 	}
-	public void setProduct(List<Catalogo> product) {
+	public void setProduct(List<Product> product) {
 		this.product = product;
 	}
 	
@@ -90,7 +90,6 @@ public class CategoriaProduct {
     /* ME SALTA ERROR AYUDA tomyhertz */
 
     
-    @ManyToOne
-    @JoinColumn(name ="product_id")
-    private List<Catalogo> product;
-	} 
+    @OneToMany(mappedBy = "categoria")
+    private List<Product> product;
+}

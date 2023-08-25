@@ -68,18 +68,6 @@
 					<%
 					} else {
 					%>
-					<li class="d-flex nav-item dropdown"><a
-						class="nav-link btn btn-light dropdown-toggle text-black" href=""
-						id="userDropdownMenu" role="button" data-bs-toggle="dropdown"
-						aria-expanded="false"> Bienvenido ${((Usuario) session.getAttribute("usuarioLogueado")).getUsername() | capfirst}
-					</a>
-						<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-							<li><a class="dropdown-item" href="{% url 'Perfil' %}">Mi
-									perfil</a></li>
-							<li><a class="dropdown-item"
-								href="{% url 'Revisar Solicitudes' %}">Revisar solicitudes</a></li>
-							<li><a class="dropdown-item" id="logout">Cerrar Sesion</a></li>
-						</ul></li>
 					<%
 					}
 					%>
