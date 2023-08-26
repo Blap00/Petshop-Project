@@ -16,7 +16,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
-//ERROR FALTA DECLARAR ENTIDAD Y TABLA
+//ERROR FALTA DECLARAR ENTIDAD Y TABLA ahora si
 @Entity
 @Table(name="product")
 public class Product {
