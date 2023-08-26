@@ -10,14 +10,16 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
-//ERROR FALTA DECLARAR ENTIDAD Y TABLA
+//ERROR FALTA DECLARAR ENTIDAD Y TABLA ahora si
 @Entity
 @Table(name="product")
-public class Catalogo {
+public class Product {
 //ERRORES FALTARON DECLARAR VARIABLES
 	//FALTO FECHAS DE CREACION
 	
@@ -48,8 +50,8 @@ public class Catalogo {
     protected void onUpdate(){
         this.updatedAt = new Date();
     }
-	public Catalogo() {
-		//INTENTAR DECLARAR CATALOGO VACIO PARA SEGUIR ESTRUCTURA BEAN
+	public Product() {
+		//INTENTAR DECLARAR CATALOGO VACIO PARA SEGUIR ESTRUCTURA BEAN super
 	}
 	public Long getId() {
 		return id;
@@ -87,7 +89,13 @@ public class Catalogo {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
-
+     /*  Relación con Categoria.  */
 	
-
+	@ManyToOne
+    @JoinColumn(name = "categoria_id")
+    private Categoria categoria;
+	
+	
+	
+	
 }

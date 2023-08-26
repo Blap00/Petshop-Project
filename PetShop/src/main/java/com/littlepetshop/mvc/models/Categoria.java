@@ -2,6 +2,7 @@ package com.littlepetshop.mvc.models;
 
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -10,23 +11,23 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "categoria_product")
-public class CategoriaProduct {
+@Table(name = "categoria")
+public class Categoria {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_categoria")
-    private Integer idCategoria;
+    private Long id;
 
     @Column(name = "nombre_categoria", unique = true, nullable = false)
     private String nombreCategoria;
     /**
      * ERROR
-     * FALTARON LOS CREATED Y UPDATED
+     * FALTARON LOS CREATED Y UPDATED super xa
      * */
     
     @Column(updatable = false)
@@ -44,22 +45,40 @@ public class CategoriaProduct {
         this.updatedAt = new Date();
     }
     
-    public CategoriaProduct() {
+    public Categoria() {
     }
 
-    public CategoriaProduct(String nombreCategoria) {
+    public Categoria(String nombreCategoria) {
         this.nombreCategoria = nombreCategoria;
     }
 
-    public Integer getIdCategoria() {
-        return idCategoria;
-    }
+    public Date getCreatedAt() {
+		return createdAt;
+	}
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
+	public Date getUpdatedAt() {
+		return updatedAt;
+	}
+	public void setUpdatedAt(Date updatedAt) {
+		this.updatedAt = updatedAt;
+	}
+	public List<Product> getProduct() {
+		return product;
+	}
+	public void setProduct(List<Product> product) {
+		this.product = product;
+	}
+	
 
-    public void setIdCategoria(Integer idCategoria) {
-        this.idCategoria = idCategoria;
-    }
-
-    public String getNombreCategoria() {
+    public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public String getNombreCategoria() {
         return nombreCategoria;
     }
 
@@ -67,8 +86,10 @@ public class CategoriaProduct {
         this.nombreCategoria = nombreCategoria;
     }
 
-    @Override
-    public String toString() {
-        return nombreCategoria;
-    }
+    
+    /* Relación con tabla Product */
+
+    
+    @OneToMany(mappedBy = "categoria")
+    private List<Product> product;
 }

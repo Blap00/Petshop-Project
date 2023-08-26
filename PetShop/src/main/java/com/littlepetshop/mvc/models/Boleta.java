@@ -40,7 +40,7 @@ public class Boleta {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "catalogo_id") // Use the appropriate column name for the foreign key
-	private Catalogo catalogo; // Use the appropriate entity class
+	private Product catalogo; // Use the appropriate entity class
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "usuario_id")
@@ -73,11 +73,11 @@ public class Boleta {
 		this.createdAt = createdAt;
 	}
 
-	public Catalogo getCatalogo() {
+	public Product getCatalogo() {
 		return catalogo;
 	}
 
-	public void setCatalogo(Catalogo catalogo) {
+	public void setCatalogo(Product catalogo) {
 		this.catalogo = catalogo;
 	}
 
