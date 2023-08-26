@@ -16,7 +16,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
-//ERROR FALTA DECLARAR ENTIDAD Y TABLA
+//ERROR FALTA DECLARAR ENTIDAD Y TABLA ahora si
 @Entity
 @Table(name="product")
 public class Product {
@@ -51,7 +51,7 @@ public class Product {
         this.updatedAt = new Date();
     }
 	public Product() {
-		//INTENTAR DECLARAR CATALOGO VACIO PARA SEGUIR ESTRUCTURA BEAN
+		//INTENTAR DECLARAR CATALOGO VACIO PARA SEGUIR ESTRUCTURA BEAN super
 	}
 	public Long getId() {
 		return id;
