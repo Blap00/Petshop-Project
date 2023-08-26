@@ -27,7 +27,7 @@ public class Categoria {
     private String nombreCategoria;
     /**
      * ERROR
-     * FALTARON LOS CREATED Y UPDATED
+     * FALTARON LOS CREATED Y UPDATED super
      * */
     
     @Column(updatable = false)

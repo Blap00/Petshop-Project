@@ -51,7 +51,7 @@ public class Product {
         this.updatedAt = new Date();
     }
 	public Product() {
-		//INTENTAR DECLARAR CATALOGO VACIO PARA SEGUIR ESTRUCTURA BEAN
+		//INTENTAR DECLARAR CATALOGO VACIO PARA SEGUIR ESTRUCTURA BEAN super
 	}
 	public Long getId() {
 		return id;
