@@ -89,11 +89,12 @@ public class Product {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
-     /*  No me deja usar @OneToMany Chatgpt me dijo que hiciera esto y es lo unico que me funcionó  */
+     /*  Relación con Categoria.  */
 	
 	@ManyToOne
     @JoinColumn(name = "categoria_id")
     private Categoria categoria;
+	
 	
 	
 	

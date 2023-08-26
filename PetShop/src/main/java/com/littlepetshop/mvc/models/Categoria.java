@@ -87,7 +87,7 @@ public class Categoria {
     }
 
     
-    /* ME SALTA ERROR AYUDA tomyhertz */
+    /* Relación con tabla Product */
 
     
     @OneToMany(mappedBy = "categoria")
