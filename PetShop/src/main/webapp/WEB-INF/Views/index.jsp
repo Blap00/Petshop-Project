@@ -63,7 +63,7 @@
 					<li class="d-flex nav-item dropdown"><a
 						class="nav-link btn btn-light dropdown-toggle text-black" href=""
 						id="userDropdownMenu" role="button" data-bs-toggle="dropdown"
-						aria-expanded="false"> Bienvenido ${user.username}</a>
+						aria-expanded="false"> Bienvenid@ ${user.username}</a>
 						<ul class="dropdown-menu" aria-labelledby="userDropdownMenu">
 							<!-- ... Opciones de menú ... -->
 							<li><a class="dropdown-item" href="/logout-in">Salir</a></li>
