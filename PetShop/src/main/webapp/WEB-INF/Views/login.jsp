@@ -84,7 +84,7 @@
 				</div>
 				<div class="col-7">
 					<p>
-						Don't have an account? <br> <a href="/register">Register
+						Don't have an account? <br> <a href="/register-in">Register
 							here!</a>
 					</p>
 				</div>
