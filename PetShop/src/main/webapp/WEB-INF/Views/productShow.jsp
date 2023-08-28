@@ -100,7 +100,7 @@
 								</div>
 								<div class="card-body d-flex flex-column">
 									<h5 class="card-title">
-										<c:out value='${product.nombre_producto}' />
+										<c:out value='${product.name}' />
 									</h5>
 									<p class="card-text">
 										<c:out value='${product.descripcion}' />
