@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,17 +39,10 @@
 						role="button" data-bs-toggle="dropdown" aria-expanded="false">
 							Galeria De articulos </a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-							<%-- IMPLEMENTAR UN CICLO DE FOR CON CADA CATEGORIA DE ARTICULOS --%>
-							<%--
-							for (int i = 0; i < categorias.size(); i++) {
-								Categoria categoria = categorias.get(i);
-							--%>
-							<!-- ARREGLAR y poner tamaño de categorias -->
-							<li><a class="dropdown-item"
-								href="/catalogo/${categoria.id}">${categoria.nombre}</a></li>
-							<%--
-							}
-							--%>
+							<c:forEach var="category" items="${categorias}">
+								<li><a class="dropdown-item" href="category/${category.id }">${category.name}</a></li>
+							</c:forEach>
+
 						</ul></li>
 					<li class="nav-item"><a class="nav-link" href="/quienes-somos">Quienes
 							somos</a></li>

@@ -1,5 +1,6 @@
 package com.littlepetshop.mvc.controllers;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +12,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.littlepetshop.mvc.models.Categoria;
 import com.littlepetshop.mvc.models.Usuario;
-import com.littlepetshop.mvc.services.UserService;
+import com.littlepetshop.mvc.services.CategoryService;
 import com.littlepetshop.mvc.services.UserService;
 import com.littlepetshop.mvc.validators.UsuarioValidator;
 
@@ -29,16 +31,20 @@ public class UserController {
 	@Autowired
 	private final UsuarioValidator userValidator;
 	
-	public UserController(UserService userService, UsuarioValidator uservalidator) {
+	@Autowired 
+	private final CategoryService categoryService;
+	
+	public UserController(UserService userService, UsuarioValidator uservalidator, CategoryService categoryService) {
 		this.userService = userService;
 		this.userValidator = uservalidator;
+		this.categoryService = categoryService;
 	}
 	
 
 	@GetMapping("/")
 	public String index(Model model, HttpSession session, @ModelAttribute("usuario") Usuario usuario) {
 	    boolean estaLogueado = (session.getAttribute("userId") != null);
-	    
+	    List<Categoria> categorias = categoryService.findAll();	    
 	    if (estaLogueado) {
 	        Long userId = (Long) session.getAttribute("userId");
 	        Optional<Usuario> user = userService.getUsuarioById(userId);
@@ -48,6 +54,8 @@ public class UserController {
 	    }
 	    
 	    model.addAttribute("estaLogueado", estaLogueado);
+
+	    model.addAttribute("categorias", categorias);
 	    return "index.jsp";
 	}
 //	<-------INICIO DE SESION------->
