@@ -12,15 +12,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.littlepetshop.mvc.models.Usuario;
-<<<<<<< Updated upstream
 import com.littlepetshop.mvc.services.UserService;
-=======
-<<<<<<< Updated upstream
-=======
 import com.littlepetshop.mvc.services.UserService;
 import com.littlepetshop.mvc.validators.UsuarioValidator;
->>>>>>> Stashed changes
->>>>>>> Stashed changes
 
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
@@ -28,17 +22,7 @@ import jakarta.validation.Valid;
 @Controller
 public class UserController {
 	
-<<<<<<< Updated upstream
-	@Autowired
-	private final UserService userService;
-	
-	public UserController(UserService userService) {
-		this.userService = userService;
-	}
-	
-=======
-<<<<<<< Updated upstream
-=======
+
 	@Autowired
 	private final UserService userService;
 	
@@ -50,8 +34,7 @@ public class UserController {
 		this.userValidator = uservalidator;
 	}
 	
->>>>>>> Stashed changes
->>>>>>> Stashed changes
+
 	@GetMapping("/")
 	public String index(Model model, HttpSession session, @ModelAttribute("usuario") Usuario usuario) {
 	    boolean estaLogueado = (session.getAttribute("userId") != null);
