@@ -28,7 +28,7 @@ public class Product {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private String nombre_producto;
+	private String name;
 	
 	private String descripcion;
 	
@@ -86,11 +86,11 @@ public class Product {
 	public void setValoraciones(Integer valoraciones) {
 		this.valoraciones = valoraciones;
 	}
-	public String getNombre_producto() {
-		return nombre_producto;
+	public String getName() {
+		return name;
 	}
-	public void setNombre_producto(String nombre_producto) {
-		this.nombre_producto = nombre_producto;
+	public void setName(String name) {
+		this.name = name;
 	}
 	public String getDescripcion() {
 		return descripcion;

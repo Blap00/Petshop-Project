@@ -25,10 +25,6 @@ public class Categoria {
 
     @Column(unique = true, nullable = false)
     private String name;
-    /**
-     * ERROR
-     * FALTARON LOS CREATED Y UPDATED super xa
-     * */
     
     @Column(updatable = false)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -75,11 +71,11 @@ public class Categoria {
 		this.id = id;
 	}
 	
-    public String getname() {
+    public String getName() {
 		return name;
 	}
-	public void setname(String name) {
-		this.name = name;
+	public void setName(String nombreCategoria) {
+		this.name = nombreCategoria;
 	}
 
 
