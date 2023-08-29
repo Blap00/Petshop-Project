@@ -36,8 +36,10 @@ public class Product {
 	
 	private Integer stock;
 	
-	@Lob
-	private byte[] image;
+    private String imagenes;
+	
+	//BASE 64
+	//GUARDAR ASI
 	
 	private Integer price;
 
@@ -104,11 +106,11 @@ public class Product {
 	public void setValoraciones(int valoraciones) {
 		this.valoraciones = valoraciones;
 	}
-	public byte[] getImage() {
-		return image;
+	public String getImagenes() {
+		return imagenes;
 	}
-	public void setImage(byte[] image) {
-		this.image = image;
+	public void setImagenes(String imagenes) {
+		this.imagenes = imagenes;
 	}
 	public List<Boleta> getBoletas() {
 		return boletas;

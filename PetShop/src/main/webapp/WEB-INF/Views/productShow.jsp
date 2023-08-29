@@ -16,6 +16,25 @@
 	crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="/css/MyStyleIndex3.css">
 <title>Little pets Shop || INICIO</title>
+<style>
+
+div h5.display-3#headerText{
+margin-left: 1%; 
+margin-top: 0;
+}
+
+main div#containerProducts{
+margin-top: 1%;
+}
+div#products{
+margin-left: auto; 
+margin-right: auto; 
+margin-bottom: 5%;
+}
+div.card#productCard{
+width: 18rem;
+}
+</style>
 </head>
 <body>
 	<header>
@@ -84,19 +103,17 @@
 	</header>
 	<main>
 		<div>
-			<h5 class="display-3" style="margin-left: 1%; margin-top: 0;">Catalogo</h5>
+			<h5 id="headerText" class="display-3">Catalogo</h5>
 		</div>
 
-		<div style="margin-top: 1%;">
+		<div>
 			<div class="container">
 				<div class="row">
 					<c:forEach var="product" items="${products}">
-						<div class="col d-flex justify-content-center"
-							style="margin-left: auto; margin-right: auto; margin-bottom: 5%;">
-							<div class="card" style="width: 18rem;">
+						<div id="products" class="col d-flex justify-content-center">
+							<div id="productCard" class="card">
 								<div class="carousel-item active" data-bs-interval="2000">
-									<img src="<c:out value='${product.image}' />"
-										class="d-block w-100">
+									<img src="<c:out value='${product.image}' />" alt="ImagenProducto" class="d-block w-100">
 								</div>
 								<div class="card-body d-flex flex-column">
 									<h5 class="card-title">
@@ -117,7 +134,6 @@
 										Stock disponible:
 										<c:out value='${product.stock}' />
 									</p>
-									<!-- Inicio Boton Detalles -->
 									<div style="align-items: center;">
 										<div class="row">
 											<div class="col">
@@ -145,7 +161,6 @@
 										</div>
 									</div>
 								</div>
-								<!-- Fin Boton Detalles -->
 							</div>
 						</div>
 					</c:forEach>

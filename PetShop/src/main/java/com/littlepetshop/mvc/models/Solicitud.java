@@ -38,9 +38,9 @@ public class Solicitud {
 	@Size(max=90, message="El correo debe tener como maximo de 90 caracteres")
 	private String email;
 	
-	@Column(columnDefinition = "TEXT")
-	@NotNull(message="La descripción del producto no deberia estar vacia! :D")
-	private String descripcion;
+	@Column(columnDefinition = "CLOB")
+	@NotNull
+	private String descript;
 	
 	@Transient
 	private MultipartFile archivoAdjunto; // Campo para el archivo adjunto
@@ -91,12 +91,12 @@ public class Solicitud {
 		this.email = email;
 	}
 
-	public String getDescripcion() {
-		return descripcion;
+	public String getDescript() {
+		return descript;
 	}
 
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
+	public void setDescript(String descripciones) {
+		this.descript = descripciones;
 	}
 
 	public MultipartFile getArchivoAdjunto() {
