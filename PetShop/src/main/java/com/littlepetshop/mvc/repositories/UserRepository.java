@@ -1,5 +1,7 @@
 package com.littlepetshop.mvc.repositories;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -14,4 +16,8 @@ public interface UserRepository extends CrudRepository <Usuario,Long>{
 	
 	Usuario findByUsername(String username);
 	
+    @Query("SELECT u FROM Usuario u WHERE u.admin = true")
+    List<Usuario> findAllAdmins();
+    List<Usuario> findByAdmin(boolean isAdmin);
+
 }
