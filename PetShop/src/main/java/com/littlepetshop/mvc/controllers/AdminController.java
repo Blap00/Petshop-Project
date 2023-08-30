@@ -3,13 +3,14 @@ package com.littlepetshop.mvc.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.littlepetshop.mvc.models.Product;
 import com.littlepetshop.mvc.models.Usuario;
+import com.littlepetshop.mvc.services.ProductService;
 import com.littlepetshop.mvc.services.UserService;
 
 @Controller   
@@ -18,6 +19,9 @@ public class AdminController {
 	
     @Autowired
     private UserService userService;
+    
+    @Autowired
+    private ProductService productService;
 
     public AdminController(UserService userService) {
 		super();
@@ -25,6 +29,12 @@ public class AdminController {
 	}
  
     
+	public AdminController(ProductService productService) {
+		super();
+		this.productService = productService;
+	}
+
+
 	@GetMapping("/dashboard")
     public String adminDashboard(Model model) {
         Integer totalUsuarios = userService.getTotalUsuarios();
@@ -48,10 +58,8 @@ public class AdminController {
 
     @GetMapping("/manage-products")
     public String manageProducts(Model model) {
-        List<Producto> productos = productService.getAllProductos();
+        List<Product> productos = productService.findAll();
         model.addAttribute("productos", productos);
-        
-        // métodos correspondientes en tus servicios y repositorios
         return "admin/manage-products";
     }
 //tambien faltaria cambiar el nombre de las rutas
