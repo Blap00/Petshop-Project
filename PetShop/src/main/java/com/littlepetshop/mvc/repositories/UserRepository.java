@@ -16,6 +16,8 @@ public interface UserRepository extends CrudRepository <Usuario,Long>{
 	
 	Usuario findByUsername(String username);
 	
+	
+	//Renzo: agregue lo creado en el admin controller
     @Query("SELECT u FROM Usuario u WHERE u.admin = true")
     List<Usuario> findAllAdmins();
     List<Usuario> findByAdmin(boolean isAdmin);
