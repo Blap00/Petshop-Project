@@ -5,12 +5,9 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.littlepetshop.mvc.models.Descuento;
+import com.littlepetshop.mvc.models.Categoria;
 
 @Repository
-public interface DescuentoRepository extends JpaRepository <Descuento,Long> {
-	
-	Descuento findByCodigo(String codigo);
-
-
+public interface CategoryRepository extends JpaRepository<Categoria, Long>{
+	List<Categoria> findAll();
 }

@@ -11,6 +11,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
@@ -27,14 +28,26 @@ public class Product {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private String nombre_producto;
+	private String name;
 	
 	private String descripcion;
 	
-	private int valoraciones;
+	private Integer valoraciones;
+	
+	private Integer stock;
+	
+	@Lob
+	private byte[] image;
+	
+	private Integer price;
+
 	
 	@OneToMany(mappedBy = "catalogo")
 	private List<Boleta> boletas;
+	
+	@ManyToOne
+    @JoinColumn(name = "categoria_id")
+    private Categoria categoria;
 	
 	@Column(updatable = false)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -50,8 +63,12 @@ public class Product {
     protected void onUpdate(){
         this.updatedAt = new Date();
     }
-	public Product() {
-		//INTENTAR DECLARAR CATALOGO VACIO PARA SEGUIR ESTRUCTURA BEAN super
+    
+	public Integer getStock() {
+		return stock;
+	}
+	public void setStock(Integer stock) {
+		this.stock = stock;
 	}
 	public Long getId() {
 		return id;
@@ -59,11 +76,21 @@ public class Product {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getNombre_producto() {
-		return nombre_producto;
+	
+	public Integer getPrice() {
+		return price;
 	}
-	public void setNombre_producto(String nombre_producto) {
-		this.nombre_producto = nombre_producto;
+	public void setPrice(Integer price) {
+		this.price = price;
+	}
+	public void setValoraciones(Integer valoraciones) {
+		this.valoraciones = valoraciones;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 	public String getDescripcion() {
 		return descripcion;
@@ -77,6 +104,24 @@ public class Product {
 	public void setValoraciones(int valoraciones) {
 		this.valoraciones = valoraciones;
 	}
+	public byte[] getImage() {
+		return image;
+	}
+	public void setImage(byte[] image) {
+		this.image = image;
+	}
+	public List<Boleta> getBoletas() {
+		return boletas;
+	}
+	public void setBoletas(List<Boleta> boletas) {
+		this.boletas = boletas;
+	}
+	public Categoria getCategoria() {
+		return categoria;
+	}
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
 	public Date getCreatedAt() {
 		return createdAt;
 	}
@@ -89,13 +134,5 @@ public class Product {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
-     /*  Relación con Categoria.  */
-	
-	@ManyToOne
-    @JoinColumn(name = "categoria_id")
-    private Categoria categoria;
-	
-	
-	
 	
 }
