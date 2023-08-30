@@ -23,12 +23,8 @@ public class Categoria {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "nombre_categoria", unique = true, nullable = false)
-    private String nombreCategoria;
-    /**
-     * ERROR
-     * FALTARON LOS CREATED Y UPDATED super xa
-     * */
+    @Column(unique = true, nullable = false)
+    private String name;
     
     @Column(updatable = false)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -46,10 +42,6 @@ public class Categoria {
     }
     
     public Categoria() {
-    }
-
-    public Categoria(String nombreCategoria) {
-        this.nombreCategoria = nombreCategoria;
     }
 
     public Date getCreatedAt() {
@@ -78,18 +70,16 @@ public class Categoria {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getNombreCategoria() {
-        return nombreCategoria;
-    }
+	
+    public String getName() {
+		return name;
+	}
+	public void setName(String nombreCategoria) {
+		this.name = nombreCategoria;
+	}
 
-    public void setNombreCategoria(String nombreCategoria) {
-        this.nombreCategoria = nombreCategoria;
-    }
 
-    
-    /* Relación con tabla Product */
 
-    
-    @OneToMany(mappedBy = "categoria")
+	@OneToMany(mappedBy = "categoria")
     private List<Product> product;
 }
