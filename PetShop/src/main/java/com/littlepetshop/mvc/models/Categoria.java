@@ -26,6 +26,9 @@ public class Categoria {
     @Column(unique = true, nullable = false)
     private String name;
     
+	@OneToMany(mappedBy = "categoria")
+    private List<Product> product;
+    
     @Column(updatable = false)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date createdAt;
@@ -80,6 +83,5 @@ public class Categoria {
 
 
 
-	@OneToMany(mappedBy = "categoria")
-    private List<Product> product;
+
 }

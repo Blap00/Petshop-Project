@@ -16,10 +16,28 @@
 	crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="/css/MyStyleIndex3.css">
 <title>Little pets Shop || INICIO</title>
+<style>
+
+div h5.display-3#headerText{
+margin-left: 1%; 
+margin-top: 0;
+}
+
+main div#containerProducts{
+margin-top: 1%;
+}
+div#products{
+margin-left: auto; 
+margin-right: auto; 
+margin-bottom: 5%;
+}
+div.card#productCard{
+width: 18rem;
+}
+</style>
 </head>
 <body>
 	<header>
-		<!-- Barra de navegacion superior -->
 		<nav
 			class="navbar navbar-expand-lg navbar-light sticky-top navbarheader">
 			<div class="container-fluid divLogo">
@@ -35,22 +53,21 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarNavDropdown">
 				<ul class="navbar-nav me-auto">
-					<li class="nav-item"><a class="nav-link active"
+					<li class="nav-item"><a class="nav-link"
 						aria-current="page" href="/">Inicio</a></li>
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" id="navbarDropdownMenuLink"
 						role="button" data-bs-toggle="dropdown" aria-expanded="false">
 							Galeria De articulos </a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-							<c:forEach var="category" items="${categorias}">
-								<li><a class="dropdown-item"
-									href="category/${category.id }">${category.name}</a></li>
+							<c:forEach var="category" items="${catalogos}">
+								<li><a class="dropdown-item" href="category/${category.id }">${category.name}</a></li>
 							</c:forEach>
 
 						</ul></li>
 					<li class="nav-item"><a class="nav-link" href="/quienes-somos">Quienes
 							somos</a></li>
-					<li class="nav-item"><a class="nav-link" aria-current="page"
+					<li class="nav-item"><a class="nav-link active" aria-current="page"
 						href="/catalogo">Catalogo</a></li>
 					<li class="nav-item"><a class="nav-link" aria-current="page"
 						href="/seguimiento">Seguimiento</a></li>
@@ -67,7 +84,7 @@
 					<li class="d-flex nav-item dropdown"><a
 						class="nav-link btn btn-light dropdown-toggle text-black" href=""
 						id="userDropdownMenu" role="button" data-bs-toggle="dropdown"
-						aria-expanded="false"> Bienvenido ${user.username}</a>
+						aria-expanded="false"> Bienvenid@ ${user.username}</a>
 						<ul class="dropdown-menu" aria-labelledby="userDropdownMenu">
 							<!-- ... Opciones de menú ... -->
 							<li><a class="dropdown-item" href="/logout-in">Salir</a></li>
@@ -79,24 +96,21 @@
 					%>
 				</div>
 			</div>
-
 		</nav>
 	</header>
 	<main>
 		<div>
-			<h5 class="display-3" style="margin-left: 1%; margin-top: 0;">Catalogo</h5>
+			<h5 id="headerText" class="display-3">Catalogo</h5>
 		</div>
 
-		<div style="margin-top: 1%;">
+		<div>
 			<div class="container">
 				<div class="row">
 					<c:forEach var="product" items="${products}">
-						<div class="col d-flex justify-content-center"
-							style="margin-left: auto; margin-right: auto; margin-bottom: 5%;">
-							<div class="card" style="width: 18rem;">
+						<div id="products" class="col d-flex justify-content-center">
+							<div id="productCard" class="card">
 								<div class="carousel-item active" data-bs-interval="2000">
-									<img src="<c:out value='${product.image}' />"
-										class="d-block w-100">
+									<img src="<c:out value='${product.imagenes}' />" alt="ImagenProducto" class="d-block w-100">
 								</div>
 								<div class="card-body d-flex flex-column">
 									<h5 class="card-title">
@@ -117,7 +131,6 @@
 										Stock disponible:
 										<c:out value='${product.stock}' />
 									</p>
-									<!-- Inicio Boton Detalles -->
 									<div style="align-items: center;">
 										<div class="row">
 											<div class="col">
@@ -145,7 +158,6 @@
 										</div>
 									</div>
 								</div>
-								<!-- Fin Boton Detalles -->
 							</div>
 						</div>
 					</c:forEach>
@@ -153,5 +165,65 @@
 			</div>
 		</div>
 	</main>
+		<div class="footer mt-auto">
+		<footer class="container py-3">
+			<div class="row">
+				<div class="col-md">
+					<div class="text-center">
+						<a href="/"><img src="img/logo3.png" height="50px"
+							alt="Littlepetshop" class="imgLogo01"></a> <small
+							class="d-block text-muted">Fundacion Forge</small> <small
+							class="d-block text-muted">Coding Dojo Java Fullstack</small> <small
+							class="d-block text-muted">©2023 Derechos reservados</small>
+					</div>
+				</div>
+				<div class="col-6 col-md">
+					<h5>Acerca de</h5>
+					<ul class="list-unstyled text-small">
+						<li><a class="text-muted"
+							href="https://github.com/Blap00/Petshop-Project">Link
+								repositorio</a></li>
+						<li><a class="text-muted"
+							href="mailto:fabian.palma.ramos@gmail.com">Mail al director
+								de proyecto</a></li>
+						<li><a class="text-muted" href="https://fondationforge.org/">FORGE</a></li>
+					</ul>
+				</div>
+				<div class="col-6 col-md">
+					<h5>
+						<i class="fa-brands fa-instagram"></i> Nuestras redes
+					</h5>
+					<ul class="list-unstyled text-small">
+						<li><a class="text-muted"
+							href="https://www.instagram.com/_little.pets.shop_?igshid=YmMyMTA2M2Y/">@_little.pets.shop</a></li>
+						<li><a class="text-muted"
+							href="https://www.instagram.com/_._Blap_._/">@_._Blap_._</a></li>
+						<li><a class="text-muted"
+							href="https://www.instagram.com/renzogonzales19/">@renzogonzales19</a></li>
+					</ul>
+				</div>
+
+				<div class="col-6 col-md">
+					<h5>Equipo (Github)</h5>
+					<ul class="list-unstyled text-small">
+						<li><a class="text-muted" href="https://github.com/Blap00">Fabian
+								Palma</a></li>
+						<li><a class="text-muted"
+							href="https://github.com/GOTZEUS11DEMOR">Renzo Gonzales</a></li>
+						<li><a class="text-muted" href="https://github.com/Propheus">
+								Tomas Hertz</a></li>
+						<li><a class="text-muted" href="https://github.com/Isiscea">Isis
+								Cea</a></li>
+					</ul>
+				</div>
+			</div>
+		</footer>
+	</div>
+	<script src="https://kit.fontawesome.com/6f2c5cc122.js"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+		crossorigin="anonymous"></script>
 </body>
 </html>
