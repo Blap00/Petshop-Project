@@ -32,12 +32,7 @@ public class Boleta {
 	@Column(updatable = false)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date createdAt;
-
-	@PrePersist
-	protected void onCreate() {
-		this.createdAt = new Date();
-	}
-
+	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "catalogo_id") // Use the appropriate column name for the foreign key
 	private Product catalogo; // Use the appropriate entity class
@@ -45,6 +40,14 @@ public class Boleta {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "usuario_id")
 	private Usuario usuario;
+	
+
+	@PrePersist
+	protected void onCreate() {
+		this.createdAt = new Date();
+	}
+
+
 
 	public Boleta() {
 	}
