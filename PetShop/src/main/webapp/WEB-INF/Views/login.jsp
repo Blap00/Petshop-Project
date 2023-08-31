@@ -77,6 +77,10 @@
 				<form:label path="password">Password: </form:label>
 				<form:input type="password" path="password" class="form-control" />
 				<form:errors path="password" cssClass="text-danger" />
+				<c:if test="${not empty sessionScope.error}">
+					<div class="alert alert-danger">${sessionScope.error}</div>
+					<c:remove var="error" scope="session" />
+				</c:if>
 			</div>
 			<div class="mb-3 row">
 				<div class="col-5">
