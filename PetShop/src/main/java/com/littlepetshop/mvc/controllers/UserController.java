@@ -74,8 +74,8 @@ public class UserController {
 			session.setAttribute("userId", u.getId());
 			return "redirect:/";
 		} else {
-			session.setAttribute("error", "Clave o email invalida");
-			return "redirect:/login";
+			session.setAttribute("error", "Credenciales invalidas");
+			return "redirect:/login-in";
 		}
 	}
 //  <-------REGISTRO DE USUARIO------->
@@ -88,7 +88,8 @@ public class UserController {
 	public String indexRegPost(@Valid @ModelAttribute("usuario")Usuario usuario, BindingResult result, HttpSession session) {
 		userValidator.validate(usuario, result);
 		if(result.hasErrors()) {
-			return "redirect:/register";
+			
+			return "register.jsp";
 		}
 		else {
 			Usuario u = userService.registerUser(usuario);

@@ -186,10 +186,6 @@
 							href="https://www.instagram.com/_._Blap_._/">@_._Blap_._</a></li>
 						<li><a class="text-muted"
 							href="https://www.instagram.com/renzogonzales19/">@renzogonzales19</a></li>
-						<li><a class="text-muted"
-							href="https://www.instagram.com/vixo_guimaraes23/">@vixo_guimaraes23</a></li>
-						<li><a class="text-muted"
-							href="https://www.instagram.com/meiikaren/">@meiikaren</a></li>
 					</ul>
 				</div>
 

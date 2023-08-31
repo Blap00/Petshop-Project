@@ -99,7 +99,7 @@
 			</div>
 		</form:form>
 	</main>
-	<div class="footer mt-auto">
+		<div class="footer mt-auto">
 		<footer class="container py-3">
 			<div class="row">
 				<div class="col-md">
@@ -134,10 +134,6 @@
 							href="https://www.instagram.com/_._Blap_._/">@_._Blap_._</a></li>
 						<li><a class="text-muted"
 							href="https://www.instagram.com/renzogonzales19/">@renzogonzales19</a></li>
-						<li><a class="text-muted"
-							href="https://www.instagram.com/vixo_guimaraes23/">@vixo_guimaraes23</a></li>
-						<li><a class="text-muted"
-							href="https://www.instagram.com/meiikaren/">@meiikaren</a></li>
 					</ul>
 				</div>
 
@@ -157,6 +153,7 @@
 			</div>
 		</footer>
 	</div>
+	
 	<script src="https://kit.fontawesome.com/6f2c5cc122.js"
 		crossorigin="anonymous"></script>
 	<script

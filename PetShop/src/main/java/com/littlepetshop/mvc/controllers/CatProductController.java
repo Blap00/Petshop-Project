@@ -72,8 +72,7 @@ public class CatProductController {
 
 	@GetMapping("/category/{id}")
 	public String index(@PathVariable Long id, Model model, HttpSession session) {
-		boolean estaLogueado = (session.getAttribute("userId") != null);
-
+		boolean estaLogueado = (session.getAttribute("userId") != null);    
 		if (estaLogueado) {
 			Long userId = (Long) session.getAttribute("userId");
 			Optional<Usuario> user = userService.getUsuarioById(userId);
@@ -85,9 +84,11 @@ public class CatProductController {
 		model.addAttribute("estaLogueado", estaLogueado);
 		
 		Iterable<Product> products = productServ.findByCategoriaId(id);
+		
 		Iterable<Categoria> catalogos = categoryServ.findAll();
 		Iterable<Descuento> descuentos = descuentoServ.getAllDescuentos();
 		// Add retrieved data to the model
+		model.addAttribute("categoriaActual", id);
 		model.addAttribute("products", products);
 		model.addAttribute("catalogos", catalogos);
 		model.addAttribute("descuentos", descuentos);
