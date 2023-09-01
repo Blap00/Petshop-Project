@@ -19,8 +19,7 @@ public class UsuarioValidator implements Validator {
         Usuario user = (Usuario) target;
         
         if (!user.getPasswordConfirmation().equals(user.getPassword())) {
-            // 3
-            errors.rejectValue("passwordConfirmation", "Match");
-        }         
+        	errors.rejectValue("passwordConfirmation", "Match", "Las contraseñas deben coincidir");
+        }
     }
 }
