@@ -63,6 +63,7 @@ public class CatProductController {
 		Iterable<Descuento> descuentos = descuentoServ.getAllDescuentos();
 
 		// Add retrieved data to the model
+		model.addAttribute("cart",session.getAttribute("cart"));
 		model.addAttribute("products", products);
 		model.addAttribute("catalogos", catalogos);
 		model.addAttribute("descuentos", descuentos);
@@ -88,6 +89,7 @@ public class CatProductController {
 		Iterable<Categoria> catalogos = categoryServ.findAll();
 		Iterable<Descuento> descuentos = descuentoServ.getAllDescuentos();
 		// Add retrieved data to the model
+		model.addAttribute("cart",session.getAttribute("cart"));
 		model.addAttribute("categoriaActual", id);
 		model.addAttribute("products", products);
 		model.addAttribute("catalogos", catalogos);
