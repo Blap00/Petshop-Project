@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ page isErrorPage="true"%>
 <!DOCTYPE html>
 <html>
@@ -38,9 +39,10 @@
 					<li class="nav-item"><a class="nav-link" aria-current="page"
 						href="/">Inicio</a></li>
 					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle active" id="navbarDropdownMenuLink"
-						role="button" data-bs-toggle="dropdown" aria-expanded="false">
-							Galeria De articulos </a>
+						class="nav-link dropdown-toggle active"
+						id="navbarDropdownMenuLink" role="button"
+						data-bs-toggle="dropdown" aria-expanded="false"> Galeria De
+							articulos </a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 							<c:forEach var="category" items="${catalogos}">
 								<c:choose>
@@ -62,7 +64,27 @@
 						href="/catalogo">Catalogo</a></li>
 					<li class="nav-item"><a class="nav-link" aria-current="page"
 						href="/seguimiento">Seguimiento</a></li>
+
 				</ul>
+				<ul class="navbar-nav me-2">
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" id="navbarDropdownMenuLink"
+						role="button" data-bs-toggle="dropdown" aria-expanded="false">Carrito</a>
+						<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+							<li><c:choose>
+									<c:when test="${not empty cart and fn:length(cart) > 0}">
+										<c:forEach var="item" items="${cart}">
+											<li><c:out value="${item.name}" /></li>
+										</c:forEach>
+										<a href="/cart/purchase">Comprar</a>
+									</c:when>
+									<c:otherwise>
+										<li>No hay artículos agregados</li>
+									</c:otherwise>
+								</c:choose></li>
+						</ul></li>
+				</ul>
+
 				<div class="me-3">
 					<%
 					if (!(Boolean) request.getAttribute("estaLogueado")) {
@@ -129,12 +151,16 @@
 										<div class="row">
 											<div class="col">
 												<div class="m-0 p-0">
-													<form class="row" name="comprar" action="catalogo.html"
+													<form class="row" name="comprar" action="/cart/add"
 														method="post" id="formComprar">
-														<input type="hidden" name="_csrf" value="${_csrf.token}" />
+														<input type="hidden" name="redirect"
+															value="category/${product.categoria.id }" /> <input
+															type="hidden" name="_csrf" value="${_csrf.token}" /> <input
+															type="hidden" name="productId" value="${product.id}" />
+														<!-- Add this line -->
 														<div class="col-auto mb-3">
 															<label for="cantidad">Cantidad a pedir:</label> <input
-																class="form-control" type="number" name="cantidad"
+																class="form-control" type="number" name="stock"
 																id="cantidad" value='1'
 																max="<c:out value='${product.stock}' />" min="1"
 																role="button">

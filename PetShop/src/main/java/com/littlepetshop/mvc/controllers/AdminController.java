@@ -81,5 +81,5 @@ public class AdminController {
         model.addAttribute("productos", productos);
         return "admin/manage-products";
     }
-}
 
+}

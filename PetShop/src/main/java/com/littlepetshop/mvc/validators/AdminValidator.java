@@ -8,7 +8,7 @@ import com.littlepetshop.mvc.models.Usuario;
 
 @Component
 public class AdminValidator implements Validator {
-    
+
     @Override
     public boolean supports(Class<?> clazz) {
         return Usuario.class.equals(clazz);
@@ -17,7 +17,7 @@ public class AdminValidator implements Validator {
     @Override
     public void validate(Object target, Errors errors) {
         Usuario user = (Usuario) target;
-        
+
         if (user.isSuperAdmin()) {
             // Validación para Super Admin
             // validaciones específicas para el Super Admin 
