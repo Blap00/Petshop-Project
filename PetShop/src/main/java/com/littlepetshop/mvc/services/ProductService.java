@@ -47,6 +47,16 @@ public class ProductService {
         return -1; // Devuelve un valor negativo para indicar que no se encontró el producto.
     }
 
+	public void addStockById(Long id, int quantityToAdd) {
+        Product product = productRepo.findById(id).orElse(null);
+        if (product != null) {
+            // Aumenta el stock del producto
+            product.setStock(product.getStock() + quantityToAdd);
+            // Guarda el producto actualizado en la base de datos
+            productRepo.save(product);
+        }
+    }
+	
     public void removeStockById(Long id, Integer stock) {
         Product product = productRepo.findById(id).orElse(null);
         if (product != null) {

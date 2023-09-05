@@ -76,7 +76,7 @@
 										<c:forEach var="item" items="${cart}">
 											<li><c:out value="${item.name}" /></li>
 										</c:forEach>
-										<a href="/cart/purchase">Comprar</a>
+										<a href="/cart/">Ver detalle</a>
 									</c:when>
 									<c:otherwise>
 										<li>No hay artículos agregados</li>
