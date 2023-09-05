@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 import com.littlepetshop.mvc.models.Boleta;
 import com.littlepetshop.mvc.repositories.BoletaRepository;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class BoletaService {
 
@@ -16,7 +18,7 @@ public class BoletaService {
         this.boletaRepository = boletaRepository;
     }
 
-    // Método para guardar una boleta en la base de datos
+    @Transactional
     public Boleta save(Boleta boleta) {
         return boletaRepository.save(boleta);
     }

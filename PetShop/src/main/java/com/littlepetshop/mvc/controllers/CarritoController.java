@@ -43,6 +43,7 @@ public class CarritoController {
 	private final BoletaService boletaService;
 
 	private final Map<Long, Boolean> purchasedProducts = new ConcurrentHashMap<>();
+	private boolean islogged;
 
 	public CarritoController(ProductService productService, ScheduledExecutorService scheduler, UserService userService,
 			BoletaService boletaService) {
@@ -122,7 +123,7 @@ public class CarritoController {
 	@PostMapping("/purchase")
 	public String purchaseCart(HttpSession session, @ModelAttribute("boleta") Boleta boleta, BindingResult result,
 			Model model) {
-
+		Usuario usuario = null;
 		if (result.hasErrors()) {
 			return "redirect:/cart/";
 		} else {
@@ -134,26 +135,29 @@ public class CarritoController {
 				Optional<Usuario> userOptional = userService.getUsuarioById(userId);
 
 				if (userOptional.isPresent()) {
-					Usuario usuario = userOptional.get();
-
-					boleta.setUsuario(usuario);
-					boletaService.save(boleta);
-					return "redirect:/";
+					usuario = userOptional.get();
+					islogged=true;
 				}
 			} else {
 				Optional<Usuario> optuser = userService.getUsuarioById((long) 81);
 				if (optuser.isPresent()) {
-					Usuario user = optuser.get();
-					boleta.setUsuario(user);
-					boletaService.save(boleta);
+					usuario = optuser.get();
+					islogged=false;
+
 				}
 			}
 
 			List<Product> cart = (List<Product>) session.getAttribute("cart");
 			if (cart != null) {
 				for (Product product : cart) {
-					purchasedProducts.put(product.getId(), true);
-				}
+		            Boleta newBoleta = new Boleta();
+		            newBoleta.setPriceProduct(product.getStock() * product.getPrice());
+		            newBoleta.setCatalogo(product);
+		            newBoleta.setUsuario(usuario);
+
+		            // Guarda la boleta en la base de datos
+		            boletaService.save(newBoleta);
+		        }
 			}
 
 			// Limpia el carrito después de la compra

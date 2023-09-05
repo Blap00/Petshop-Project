@@ -111,33 +111,30 @@
 						</td>
 						<td><c:out value="${carrito.price}" /></td>
 						<td><c:out value="${carrito.stock * carrito.price}" /></td>
-
-						<td>
-							<!-- Botones para comprar o eliminar el producto --> <form:form
-								action="purchase" modelAttribute="boleta" method="POST">
-								<form:input type="hidden" path="priceProduct"
-									value="${carrito.stock * carrito.price}"></form:input>
-								<form:input type="hidden" path="catalogo" value="${carrito.id}"></form:input>
-								<%
-								if (!(Boolean) request.getAttribute("estaLogueado")) {
-								%>
-								<form:input type="hidden" path="usuario" value="61"></form:input>
-								<%
-								} else {
-								%>
-								<form:input type="hidden" path="usuario" value="${userid}"></form:input>
-								<%
-								}
-								%>
-								<button type="submit" class="btn btn-primary">Comprar</button>
-								<a href="delete/${carrito.id}" class="btn btn-danger">Eliminar</a>
-							</form:form>
-
-						</td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
+		<form:form action="purchase" modelAttribute="boleta" method="POST">
+			<c:forEach var="carrito" items="${cart}">
+				<!-- ... Código para mostrar los productos en el carrito ... -->
+				<form:input type="hidden" path="priceProduct" value="${carrito.price}"></form:input>
+				<form:input type="hidden" path="catalogo" value="${carrito.id}"></form:input>
+				<%
+				if (!(Boolean) request.getAttribute("estaLogueado")) {
+				%>
+				<form:input type="hidden" path="usuario" value="61"></form:input>
+				<%
+				} else {
+				%>
+				<form:input type="hidden" path="usuario" value="${userid}"></form:input>
+				<%
+				}
+				%>
+			</c:forEach>
+			<button type="submit" class="btn btn-primary">Comprar</button>
+		</form:form>
+
 	</main>
 	<div class="footer mt-auto">
 		<footer class="container py-3">
