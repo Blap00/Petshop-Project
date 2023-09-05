@@ -82,94 +82,32 @@
 			</div>
 		</nav>
 	</header>
-	<main class="container-fluid">
-		<div class="row">
-			<div class="col-lg-8 col-md-6">
-				<table class="table">
-					<thead>
-						<tr>
-							<td>Listado</td>
-							<td>Acciones</td>
-						</tr>
-					</thead>
-					<tbody>
-						<c:if test="${superStaff}">
-							<tr>
-								<td>Usuarios</td>
-								<td>
-									<form action="showdata" method="GET">
-										<input type="hidden" name="redirect" value="usuarios">
-										<button type="submit" class="btn btn-primary">Ver Usuarios</button>
-									</form>
-								</td>
-							</tr>
-						</c:if>
-						<tr>
-							<td>Boletas</td>
-							<td>
-								<form action="showdata" method="GET">
-									<input type="hidden" name="redirect" value="boletas">
-									<button type="submit" class="btn btn-primary">Ver Boletas</button>
-								</form>
-							</td>
-						</tr>
-						<tr>
-							<td>Categorias</td>
-							<td>
-								<form action="showdata" method="GET">
-									<input type="hidden" name="redirect" value="categorias">
-									<button type="submit" class="btn btn-primary">Ver Categorias</button>
-								</form>
-							</td>
-						</tr>
-						<tr>
-							<td>Descuento</td>
-							<td>
-								<form action="showdata" method="GET">
-									<input type="hidden" name="redirect" value="descuento">
-									<button type="submit" class="btn btn-primary">Ver Descuentos</button>
-								</form>
-							</td>
-						</tr>
-						<tr>
-							<td>Solicitudes</td>
-							<td>
-								<form action="showdata" method="GET">
-									<input type="hidden" name="redirect" value="solicitudes">
-									<button type="submit" class="btn btn-primary">Ver Solicitudes</button>
-								</form>
-							</td>
-						</tr>
-						<tr>
-							<td>Productos</td>
-							<td>
-								<form action="showdata" method="GET">
-									<input type="hidden" name="redirect" value="productos">
-									<button type="submit" class="btn btn-primary">Ver Productos</button>
-								</form>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="col-lg-4 col-md-6">
-				<table class="table">
-					<thead>
-						<tr>
-							<td>
-								<h5>Lista de administradores</h5>
-							</td>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach var="admins" items="${adminsList}">
-							<tr>
-								<td><c:out value="${admins.username}"></c:out></td>
-							</tr>
+	<main>
+		<div class="container">
+			<h1>Lista de Valores</h1>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<!-- Obtén dinámicamente los nombres de los atributos del primer objeto en la lista -->
+						<c:forEach var="attribute"
+							items="${list[0].getClass().declaredFields}">
+							<th>${attribute.name}</th>
 						</c:forEach>
-					</tbody>
-				</table>
-			</div>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach var="item" items="${list}">
+						<tr>
+							<!-- Obtén dinámicamente los valores de los atributos del objeto actual -->
+							<c:forEach var="attribute"
+								items="${item.getClass().declaredFields}">
+								<td>${item[attribute.name]}</td>
+							</c:forEach>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+		</div>
 	</main>
 	<div class="mt-auto footer">
 		<footer class="container py-3">
@@ -231,5 +169,7 @@
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 		crossorigin="anonymous"></script>
+</body>
+</html>
 </body>
 </html>
