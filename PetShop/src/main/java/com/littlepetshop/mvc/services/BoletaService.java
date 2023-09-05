@@ -1,5 +1,7 @@
 package com.littlepetshop.mvc.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,10 @@ public class BoletaService {
     @Autowired
     public BoletaService(BoletaRepository boletaRepository) {
         this.boletaRepository = boletaRepository;
+    }
+    
+    public List<Boleta> findAll(){
+    	return (List<Boleta>) boletaRepository.findAll();
     }
 
     @Transactional

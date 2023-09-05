@@ -72,6 +72,12 @@ public class UserController {
 		if (isAuntentico) {
 			Usuario u = userService.findByUsername(username);
 			session.setAttribute("userId", u.getId());
+			if(u.isAdmin()) {
+				session.setAttribute("staff", "true");
+			}
+			if(u.isSuperAdmin()) {
+				session.setAttribute("superstaff", "true");
+			}
 			return "redirect:/";
 		} else {
 			session.setAttribute("error", "Credenciales invalidas");
@@ -94,6 +100,7 @@ public class UserController {
 		else {
 			Usuario u = userService.registerUser(usuario);
 			session.setAttribute("userId", u.getId());
+			
 			return "redirect:/login-in";	
 		}
 	}
@@ -102,6 +109,9 @@ public class UserController {
 	@GetMapping("/logout-in")
 	public String redirectIndex(HttpSession session) {
 		session.removeAttribute("userId");
+		session.removeAttribute("staff");
+		session.removeAttribute("superstaff");
+		
 		return "redirect:/";
 	}
 }
