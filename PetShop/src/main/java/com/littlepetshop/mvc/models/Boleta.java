@@ -14,8 +14,8 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 
 @Entity
 @Table(name = "boletas")
@@ -25,9 +25,9 @@ public class Boleta {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Size(min = 3, message = "El valor es muy bajo!")
-	@NotNull
-	private Integer priceProduct;
+	@Min(value = 0, message = "El precio del producto debe ser mayor o igual a 0")
+    @Max(value = 999999999, message = "El precio del producto debe ser menor o igual a 999999999")
+    private Integer priceProduct;
 
 	@Column(updatable = false)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -84,14 +84,6 @@ public class Boleta {
 		this.catalogo = catalogo;
 	}
 
-	public Usuario getusuario() {
-		return usuario;
-	}
-
-	public void setusuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
-
 	public Usuario getUsuario() {
 		return usuario;
 	}
@@ -99,5 +91,4 @@ public class Boleta {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
-
 }

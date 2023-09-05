@@ -2,12 +2,12 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ page isErrorPage="true"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Bootstrap CSS -->
 <link
@@ -16,26 +16,7 @@
 	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 	crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="/css/MyStyleIndex3.css">
-<title>Little pets Shop || INICIO</title>
-<style>
-
-div h5.display-3#headerText{
-margin-left: 1%; 
-margin-top: 0;
-}
-
-main div#containerProducts{
-margin-top: 1%;
-}
-div#products{
-margin-left: auto; 
-margin-right: auto; 
-margin-bottom: 5%;
-}
-div.card#productCard{
-width: 18rem;
-}
-</style>
+<title>Shopping List</title>
 </head>
 <body>
 	<header>
@@ -54,42 +35,25 @@ width: 18rem;
 			</button>
 			<div class="collapse navbar-collapse" id="navbarNavDropdown">
 				<ul class="navbar-nav me-auto">
-					<li class="nav-item"><a class="nav-link"
-						aria-current="page" href="/">Inicio</a></li>
+					<li class="nav-item"><a class="nav-link" aria-current="page"
+						href="/">Inicio</a></li>
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" id="navbarDropdownMenuLink"
 						role="button" data-bs-toggle="dropdown" aria-expanded="false">
 							Galeria De articulos </a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 							<c:forEach var="category" items="${catalogos}">
-								<li><a class="dropdown-item" href="category/${category.id }">${category.name}</a></li>
+								<li><a class="dropdown-item"
+									href="category/${category.id }">${category.name}</a></li>
 							</c:forEach>
 
 						</ul></li>
 					<li class="nav-item"><a class="nav-link" href="/quienes-somos">Quienes
 							somos</a></li>
-					<li class="nav-item"><a class="nav-link active" aria-current="page"
+					<li class="nav-item"><a class="nav-link" aria-current="page"
 						href="/catalogo">Catalogo</a></li>
 					<li class="nav-item"><a class="nav-link" aria-current="page"
 						href="/seguimiento">Seguimiento</a></li>
-				</ul>
-				<ul class="navbar-nav me-2">
-					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" id="navbarDropdownMenuLink"
-						role="button" data-bs-toggle="dropdown" aria-expanded="false">Carrito</a>
-						<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-							<li><c:choose>
-									<c:when test="${not empty cart and fn:length(cart) > 0}">
-										<c:forEach var="item" items="${cart}">
-											<li><c:out value="${item.name}" /></li>
-										</c:forEach>
-										<a href="/cart/">Ver detalle</a>
-									</c:when>
-									<c:otherwise>
-										<li>No hay artículos agregados</li>
-									</c:otherwise>
-								</c:choose></li>
-						</ul></li>
 				</ul>
 				<div class="me-3">
 					<%
@@ -118,76 +82,64 @@ width: 18rem;
 		</nav>
 	</header>
 	<main>
-		<div>
-			<h5 id="headerText" class="display-3">Catalogo</h5>
-		</div>
+		<h2>Tu Lista de compras;</h2>
+		<h4>Recuerda que tienes 30 mins para que tus objetos ya no esten
+			en la lista</h4>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Imagen</th>
+					<th>Nombre</th>
+					<th>Stock Solicitado</th>
+					<th>Precio Total</th>
+					<th>Acción</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach var="carrito" items="${cart}">
+					<tr>
+						<td><img src="${carrito.imagenes}" height="40px"
+							alt="Producto"></td>
+						<td><c:out value="${carrito.name}" /></td>
+						<td>
+							<form method="post" action="/actualizar-carrito">
+								<input type="number" name="cantidad" value="${carrito.stock}"
+									min="1" max="${carrito.stock}"> <input type="hidden"
+									name="productoId" value="${carrito.id}">
+								<button type="submit" class="btn btn-primary">Actualizar</button>
+							</form>
+						</td>
+						<td><c:out value="${carrito.price}" /></td>
+						<td><c:out value="${carrito.stock * carrito.price}" /></td>
 
-		<div>
-			<div class="container">
-				<div class="row">
-					<c:forEach var="product" items="${products}">
-						<div id="products" class="col d-flex justify-content-center">
-							<div id="productCard" class="card">
-								<div class="carousel-item active" data-bs-interval="2000">
-									<img src="<c:out value='${product.imagenes}' />" alt="ImagenProducto" class="d-block w-100">
-								</div>
-								<div class="card-body d-flex flex-column">
-									<h5 class="card-title">
-										<c:out value='${product.name}' />
-									</h5>
-									<p class="card-text">
-										<c:out value='${product.descripcion}' />
-									</p>
-									<p class="card-text">
-										Precio:
-										<c:out value='${product.price}' />
-									</p>
-									<p class="card-text">
-										Categoria:
-										<c:out value='${product.categoria.name}' />
-									</p>
-									<p class="card-text">
-										Stock disponible:
-										<c:out value='${product.stock}' />
-									</p>
-									<div style="align-items: center;">
-										<div class="row">
-											<div class="col">
-												<div class="m-0 p-0">
-													<form class="row" name="comprar" action="/cart/add"
-														method="post" id="formComprar">
-														<input type="hidden" name="redirect"
-															value="catalogo" /> <input
-															type="hidden" name="_csrf" value="${_csrf.token}" /> <input
-															type="hidden" name="productId" value="${product.id}" />
-														<!-- Add this line -->
-														<div class="col-auto mb-3">
-															<label for="cantidad">Cantidad a pedir:</label> <input
-																class="form-control" type="number" name="stock"
-																id="cantidad" value='1'
-																max="<c:out value='${product.stock}' />" min="1"
-																role="button">
-														</div>
-														<input class="col-auto btn btn-success w-100"
-															type="submit" value="Añadir al carrito"
-															name="comprar-btn" id="comprar-btn" role="button">
-														<input class="btn btn-success" type="hidden" name="nombre"
-															id="nombre" value='<c:out value='${product.name}' />'
-															role="button">
-													</form>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</c:forEach>
-				</div>
-			</div>
-		</div>
+						<td>
+							<!-- Botones para comprar o eliminar el producto --> <form:form
+								action="purchase" modelAttribute="boleta" method="POST">
+								<form:input type="hidden" path="priceProduct"
+									value="${carrito.stock * carrito.price}"></form:input>
+								<form:input type="hidden" path="catalogo" value="${carrito.id}"></form:input>
+								<%
+								if (!(Boolean) request.getAttribute("estaLogueado")) {
+								%>
+								<form:input type="hidden" path="usuario" value="61"></form:input>
+								<%
+								} else {
+								%>
+								<form:input type="hidden" path="usuario" value="${userid}"></form:input>
+								<%
+								}
+								%>
+								<button type="submit" class="btn btn-primary">Comprar</button>
+								<a href="delete/${carrito.id}" class="btn btn-danger">Eliminar</a>
+							</form:form>
+
+						</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
 	</main>
-		<div class="footer mt-auto">
+	<div class="footer mt-auto">
 		<footer class="container py-3">
 			<div class="row">
 				<div class="col-md">
