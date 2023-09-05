@@ -73,6 +73,19 @@ public class Usuario {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date lastLogoutDate;
 
+	//se agregó el superadmin
+	@NotNull
+    private boolean superAdmin;
+
+	public boolean isSuperAdmin() {
+		return superAdmin;
+	}
+
+	public void setSuperAdmin(boolean superAdmin) {
+		this.superAdmin = superAdmin;
+	}
+	//hasta aqui 
+	
 	public Usuario() {
 	}
 

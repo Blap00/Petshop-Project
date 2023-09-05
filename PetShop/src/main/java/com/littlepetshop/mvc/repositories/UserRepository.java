@@ -22,8 +22,8 @@ public interface UserRepository extends CrudRepository <Usuario,Long>{
     List<Usuario> findAllAdmins();
     List<Usuario> findByAdmin(boolean isAdmin);
 
-    
- // Consulta para verificar si un usuario es "superadmin"
+
+    // Consulta para verificar si un usuario es "superadmin"
     @Query("SELECT CASE WHEN COUNT(u) > 0 THEN true ELSE false END FROM Usuario u WHERE u.username = ?1 AND u.superAdmin = true")
     boolean isSuperAdmin(String username);
 }
