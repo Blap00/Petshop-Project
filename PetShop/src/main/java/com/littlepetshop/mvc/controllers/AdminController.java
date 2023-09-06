@@ -109,6 +109,8 @@ public class AdminController {
 			List<Product> productos = productService.findAll();
 			model.addAttribute("list", productos);
 			break;
+		default :
+			return "redirect:/admin/";
 		}
 		return "admin/showData.jsp";
 	}

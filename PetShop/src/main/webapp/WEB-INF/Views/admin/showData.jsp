@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ page isErrorPage="true"%>
 <!DOCTYPE html>
 <html>
@@ -88,7 +89,6 @@
 			<table class="table table-striped">
 				<thead>
 					<tr>
-						<!-- Obtén dinámicamente los nombres de los atributos del primer objeto en la lista -->
 						<c:forEach var="attribute"
 							items="${list[0].getClass().declaredFields}">
 							<th>${attribute.name}</th>
@@ -98,14 +98,21 @@
 				<tbody>
 					<c:forEach var="item" items="${list}">
 						<tr>
-							<!-- Obtén dinámicamente los valores de los atributos del objeto actual -->
 							<c:forEach var="attribute"
 								items="${item.getClass().declaredFields}">
-								<td>${item[attribute.name]}</td>
+								<td><c:choose>
+										<c:when test="${attribute.type.isArray()}"> <!-- No detecta el "String" como array en el jsp -->
+											<!-- Esto convierte el array en una cadena y lo muestra -->
+										</c:when>
+										<c:otherwise>
+											<c:out value="${item[attribute.name]}" /> <!-- Sigue entregando el string array aqui -->
+											(Type: <c:out value="${item[attribute.name].getClass().name}" />)
+											
+										</c:otherwise>
+									</c:choose></td>
 							</c:forEach>
 						</tr>
 					</c:forEach>
-				</tbody>
 			</table>
 		</div>
 	</main>
