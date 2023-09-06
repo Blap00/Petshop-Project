@@ -54,11 +54,14 @@ public class Usuario {
 	public boolean isSuperAdmin() {
 		return superAdmin;
 	}
+	public boolean getSuperAdmin() {
+		return superAdmin;
+	}
 
 	public void setSuperAdmin(boolean superAdmin) {
 		this.superAdmin = superAdmin;
 	}
-
+	
 	@OneToMany(mappedBy = "usuario")
 	private List<Boleta> boletas;
 
@@ -132,6 +135,10 @@ public class Usuario {
 
 	public void setAdmin(boolean admin) {
 		this.admin = admin;
+	}
+	
+	public boolean getAdmin() {
+		return admin;
 	}
 
 	public List<Boleta> getBoleta() {

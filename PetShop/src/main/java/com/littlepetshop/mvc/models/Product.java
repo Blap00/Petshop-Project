@@ -1,6 +1,5 @@
 package com.littlepetshop.mvc.models;
 
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -12,12 +11,12 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
 //ERROR FALTA DECLARAR ENTIDAD Y TABLA ahora si
 @Entity
 @Table(name="product")
@@ -43,9 +42,6 @@ public class Product {
 	//GUARDAR ASI
 	
 	private Integer price;
-
-	@Transient
-    private String[] myArray;
 
 	
 	@OneToMany(mappedBy = "catalogo")
@@ -75,15 +71,6 @@ public class Product {
 	}
 	public void setStock(Integer stock) {
 		this.stock = stock;
-	}
-	
-	
-	
-	public String[] getMyArray() {
-		return myArray;
-	}
-	public void setMyArray(String[] myArray) {
-		this.myArray = myArray;
 	}
 	public Long getId() {
 		return id;
@@ -150,7 +137,4 @@ public class Product {
 		this.updatedAt = updatedAt;
 	}
 	
-	public String getArrayAsString() {
-	    return Arrays.toString(myArray);
-	}
 }

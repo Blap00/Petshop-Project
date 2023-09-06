@@ -78,36 +78,30 @@ public class AdminController {
 				model.addAttribute("user", user.get());
 			}
 		}
-
+		
 		model.addAttribute("estaLogueado", estaLogueado);
 		switch (redirect) {
 		case "usuarios":
 			if ("true".equals(session.getAttribute("superstaff"))) {
-				List<Usuario> users = userService.getAllUsuarios();
-				model.addAttribute("list", users);
+				model.addAttribute("list", userService.getAllUsuarios());
 			}else {
 				return "redirect/admin/";
 			}
 			break;
 		case "boletas":
-			List<Boleta> boletas = boletaService.findAll();
-			model.addAttribute("list", boletas);
+			model.addAttribute("list", boletaService.findAll());
 			break;
 		case "categorias":
-			List<Categoria> categorias= categoryService.findAll();
-			model.addAttribute("list", categorias);
+			model.addAttribute("list", categoryService.findAll());
 			break;
 		case "descuento":
-			List<Descuento> descuento = descuentoService.getAllDescuentos();
-			model.addAttribute("list", descuento);
+			model.addAttribute("list", descuentoService.getAllDescuentos());
 			break;
 		case "solicitudes":
-			List<Solicitud> solicitudes = solicitudService.findAll();
-			model.addAttribute("list", solicitudes);
+			model.addAttribute("list", solicitudService.findAll());
 			break;
 		case "productos":
-			List<Product> productos = productService.findAll();
-			model.addAttribute("list", productos);
+			model.addAttribute("list", productService.findAll());
 			break;
 		default :
 			return "redirect:/admin/";
@@ -122,17 +116,17 @@ public class AdminController {
 			Long userId = (Long) session.getAttribute("userId");
 			Optional<Usuario> user = userService.getUsuarioById(userId);
 			if (user.isPresent()) {
-				model.addAttribute("user", user.get());
+				Usuario usuario=user.get();
+				model.addAttribute("user", usuario);
+				if(usuario.isSuperAdmin()) {
+					session.setAttribute("superStaff", "true");
+				}
 			}
 		}
 
 		model.addAttribute("estaLogueado", estaLogueado);
 
-		if (session.getAttribute("superstaff") == "true") {
-			model.addAttribute("superStaff", true);
-			List<Usuario> users = userService.getAllUsuarios();
-			model.addAttribute("users", users);
-		}
+		
 		List<Boleta> boletas = boletaService.findAll();
 		List<Categoria> categorias = categoryService.findAll();
 		List<Descuento> descuentos = descuentoService.getAllDescuentos();
@@ -140,7 +134,12 @@ public class AdminController {
 		List<Product> productos = productService.findAll();
 		List<Usuario> admins = userService.getAllAdmins();
 		// SET ON LIST
-
+		if (session.getAttribute("superstaff") == "true") {
+			
+			model.addAttribute("superStaff", true);
+			List<Usuario> users = userService.getAllUsuarios();
+			model.addAttribute("users", users);
+		}
 		// GET LIST OF ADMINS;
 		model.addAttribute("adminsList", admins);
 

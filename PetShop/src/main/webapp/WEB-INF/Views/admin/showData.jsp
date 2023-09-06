@@ -91,29 +91,88 @@
 					<tr>
 						<c:forEach var="attribute"
 							items="${list[0].getClass().declaredFields}">
-							<th>${attribute.name}</th>
+
+							
+							<c:choose>
+							<c:when test="${attribute.name eq 'password'}">
+									<th colspan="2">${attribute.name}</th>
+							</c:when>
+
+							<c:when test="${attribute.name eq 'passwordConfirmation'}">
+							</c:when>
+							<c:when test="${attribute.name eq 'updatedAt'}">
+							</c:when>
+							<c:when test="${attribute.name eq 'lastLogoutDate'}">
+							</c:when>
+							<c:otherwise>
+								<th>${attribute.name}</th>
+							</c:otherwise>
+							</c:choose>
 						</c:forEach>
 					</tr>
 				</thead>
 				<tbody>
 					<c:forEach var="item" items="${list}">
 						<tr>
+
 							<c:forEach var="attribute"
 								items="${item.getClass().declaredFields}">
-								<td><c:choose>
-										<c:when test="${attribute.type.isArray()}"> <!-- No detecta el "String" como array en el jsp -->
-											<!-- Esto convierte el array en una cadena y lo muestra -->
+								<td><c:set var="fieldName" value="${attribute.name}" /> <c:set
+										var="getterMethodName"
+										value="get${fieldName.substring(0, 1).toUpperCase()}${fieldName.substring(1)}" />
+									<c:choose>
+										<c:when test="${attribute.type.isArray()}">
+											<!-- Convert array to a comma-separated string -->
+											<c:set var="fieldValue" value="${item[getterMethodName]()}" />
+											<c:forEach var="element" items="${fieldValue}">
+												<c:if test="${not empty element}">
+													<c:out value="${element}" />
+													<c:if test="${!element.last}">, </c:if>
+												</c:if>
+											</c:forEach>
 										</c:when>
 										<c:otherwise>
-											<c:out value="${item[attribute.name]}" /> <!-- Sigue entregando el string array aqui -->
-											(Type: <c:out value="${item[attribute.name].getClass().name}" />)
-											
+											<!-- Display non-array attributes directly -->
+											<c:choose>
+												<c:when test="${fieldName == 'catalogo'}">
+													<c:out value="${item.catalogo.name}" />
+												</c:when>
+												<c:when test="${fieldName == 'usuario'}">
+													<c:out value="${item.usuario.username}" />
+												</c:when>
+												<c:when test="${fieldName == 'password'}">
+													*************
+												</c:when>
+												<c:when test="${fieldName == 'product'}">
+													<c:forEach var="product" items="${item.product}">
+														<c:out value="${product.name }" />,
+													</c:forEach>
+												</c:when>
+												<c:when test="${fieldName =='boletas' }">
+													<c:forEach var="boletas" items="${item.boletas}">
+														<c:out value="${boletas.id}"/>,
+													</c:forEach>
+												</c:when>
+												<c:when test="${fieldName =='categoria' }">
+													<c:out value="${item.categoria.name }" />
+												</c:when>
+												
+												<c:when test="${fieldName == 'imagenes'}">
+													<img src="${item.imagenes}" style="height: 40px;">
+												</c:when>
+												<c:otherwise>
+													<c:out value="${item[getterMethodName]()}" />
+												</c:otherwise>
+											</c:choose>
 										</c:otherwise>
 									</c:choose></td>
 							</c:forEach>
 						</tr>
 					</c:forEach>
+
+				</tbody>
 			</table>
+
 		</div>
 	</main>
 	<div class="mt-auto footer">
