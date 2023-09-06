@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,7 +35,7 @@ public class AdminController {
 	@Autowired
 	private final BoletaService boletaService;
 	@Autowired
-	private final CategoryService categoryService;
+	private final CategoryService categoryService;	
 	@Autowired
 	private final DescuentoService descuentoService;
 	@Autowired
@@ -56,8 +55,10 @@ public class AdminController {
 	@GetMapping("/")
 	public String indexAdmin(HttpSession session, Model model) {
 	    if ("true".equals(session.getAttribute("superstaff"))) {
+	    	session.setAttribute("superStaff", "true");
 	        return "redirect:/admin/dashboard";
 	    } else if ("true".equals(session.getAttribute("staff"))) {
+	    	session.setAttribute("staff", "true");
 	        return "redirect:/admin/dashboard";
 	    } else {
 	        return "redirect:/";
@@ -111,6 +112,11 @@ public class AdminController {
 
 	@GetMapping("/dashboard")
 	public String adminDashboard(Model model, HttpSession session) {
+		if (session.getAttribute("superstaff")=="true") {
+		}else if(session.getAttribute("staff")=="true"){
+		}else {
+			return "redirect:/";
+		}
 		boolean estaLogueado = (session.getAttribute("userId") != null);
 		if (estaLogueado) {
 			Long userId = (Long) session.getAttribute("userId");
@@ -120,6 +126,8 @@ public class AdminController {
 				model.addAttribute("user", usuario);
 				if(usuario.isSuperAdmin()) {
 					session.setAttribute("superStaff", "true");
+				}else {
+					session.setAttribute("staff", "true");
 				}
 			}
 		}

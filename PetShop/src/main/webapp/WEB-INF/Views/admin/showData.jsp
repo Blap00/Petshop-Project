@@ -90,21 +90,27 @@
 				<thead>
 					<tr>
 						<c:forEach var="attribute"
-							items="${list[0].getClass().declaredFields}">
-
+							items="${list[0].getClass().declaredFields}"> 
+							<!-- por Cada atributo del modelo enviado -->
 							
 							<c:choose>
 							<c:when test="${attribute.name eq 'password'}">
 									<th colspan="2">${attribute.name}</th>
+									<!-- Cuando el nombre del campo es password -->
+									<!-- Setea el colspan en 2, asi bloqueamos un campo vacio de la tabla -->
 							</c:when>
 
 							<c:when test="${attribute.name eq 'passwordConfirmation'}">
+							<!-- Cuando el nombre de atributo sea la confirmacion, omitira el campo y lo eliminara -->
 							</c:when>
 							<c:when test="${attribute.name eq 'updatedAt'}">
+							<!-- Cuanto sea updateAt no mostrara la fecha de creacion -->
 							</c:when>
 							<c:when test="${attribute.name eq 'lastLogoutDate'}">
+							<!-- Cuando sea logoutDate tambien la omitira -->
 							</c:when>
 							<c:otherwise>
+							<!-- En caso que las anteriores no se cumpla, entonces imprime normal -->
 								<th>${attribute.name}</th>
 							</c:otherwise>
 							</c:choose>
