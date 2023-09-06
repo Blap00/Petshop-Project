@@ -15,10 +15,11 @@
 	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 	crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="/css/MyStyleIndex3.css">
-<title>Little pets Shop || REGISTER</title>
+<title>Little pets Shop || LOGIN</title>
 </head>
 <body>
 	<header>
+		<!-- Barra de navegacion superior -->
 		<nav
 			class="navbar navbar-expand-lg navbar-light sticky-top navbarheader">
 			<div class="container-fluid divLogo">
@@ -34,15 +35,16 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarNavDropdown">
 				<ul class="navbar-nav me-auto">
-					<li class="nav-item"><a class="nav-link" aria-current="page"
-						href="/">Inicio</a></li>
+					<li class="nav-item"><a class="nav-link active"
+						aria-current="page" href="/">Inicio</a></li>
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" id="navbarDropdownMenuLink"
 						role="button" data-bs-toggle="dropdown" aria-expanded="false">
 							Galeria De articulos </a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 							<c:forEach var="category" items="${categorias}">
-								<li><a class="dropdown-item" href="category/${category.id }">${category.name}</a></li>
+								<li><a class="dropdown-item"
+									href="category/${category.id }">${category.name}</a></li>
 							</c:forEach>
 
 						</ul></li>
@@ -53,46 +55,123 @@
 					<li class="nav-item"><a class="nav-link" aria-current="page"
 						href="/seguimiento">Seguimiento</a></li>
 				</ul>
+				<div class="me-3">
+					<%
+					if (!(Boolean) request.getAttribute("estaLogueado")) {
+					%>
+					<a class="btn btn-light btn-outline-success" href="/login-in">Iniciar
+						Sesión</a>
+					<%
+					} else {
+					%>
+					<li class="d-flex nav-item dropdown"><a
+						class="nav-link btn btn-light dropdown-toggle text-black" href=""
+						id="userDropdownMenu" role="button" data-bs-toggle="dropdown"
+						aria-expanded="false"> Bienvenid@ ${user.username}</a>
+						<ul class="dropdown-menu" aria-labelledby="userDropdownMenu">
+							<!-- ... Opciones de menú ... -->
+							<li><a class="dropdown-item" href="/logout-in">Salir</a></li>
+							<li><a class="dropdown-item" href="#">Modificar Usuario</a></li>
+							<li><a class="dropdown-item" href="#">Configuración</a></li>
+						</ul></li>
+					<%
+					}
+					%>
+				</div>
+			</div>
 			</div>
 		</nav>
 	</header>
-	<main
-		class="container-fluid d-flex justify-content-center align-items-center form-login w-50">
-		<form:form accept-charset="UTF-8" action="/register/add" method="post"
-			modelAttribute="usuario" class="col-lg-6">
-			<div class="mb-3">
-				<form:label path="username">Username: </form:label>
-				<form:input path="username" class="form-control" />
-				<form:errors path="username" cssClass="text-danger" />
+	<main class="container-fluid">
+		<div class="row">
+			<div class="col-lg-8 col-md-6">
+				<table class="table">
+					<thead>
+						<tr>
+							<td>Listado</td>
+							<td>Acciones</td>
+						</tr>
+					</thead>
+					<tbody>
+						<c:if test="${superStaff}">
+							<tr>
+								<td>Usuarios</td>
+								<td>
+									<form action="showdata" method="GET">
+										<input type="hidden" name="redirect" value="usuarios">
+										<button type="submit" class="btn btn-primary">Ver Usuarios</button>
+									</form>
+								</td>
+							</tr>
+						</c:if>
+						<tr>
+							<td>Boletas</td>
+							<td>
+								<form action="showdata" method="GET">
+									<input type="hidden" name="redirect" value="boletas">
+									<button type="submit" class="btn btn-primary">Ver Boletas</button>
+								</form>
+							</td>
+						</tr>
+						<tr>
+							<td>Categorias</td>
+							<td>
+								<form action="showdata" method="GET">
+									<input type="hidden" name="redirect" value="categorias">
+									<button type="submit" class="btn btn-primary">Ver Categorias</button>
+								</form>
+							</td>
+						</tr>
+						<tr>
+							<td>Descuento</td>
+							<td>
+								<form action="showdata" method="GET">
+									<input type="hidden" name="redirect" value="descuento">
+									<button type="submit" class="btn btn-primary">Ver Descuentos</button>
+								</form>
+							</td>
+						</tr>
+						<tr>
+							<td>Solicitudes</td>
+							<td>
+								<form action="showdata" method="GET">
+									<input type="hidden" name="redirect" value="solicitudes">
+									<button type="submit" class="btn btn-primary">Ver Solicitudes</button>
+								</form>
+							</td>
+						</tr>
+						<tr>
+							<td>Productos</td>
+							<td>
+								<form action="showdata" method="GET">
+									<input type="hidden" name="redirect" value="productos">
+									<button type="submit" class="btn btn-primary">Ver Productos</button>
+								</form>
+							</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
-			<div class="mb-3">
-				<form:label path="email">Email: </form:label>
-				<form:input path="email" class="form-control" />
-				<form:errors path="email" cssClass="text-danger" />
+			<div class="col-lg-4 col-md-6">
+				<table class="table">
+					<thead>
+						<tr>
+							<td>
+								<h5>Lista de administradores</h5>
+							</td>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="admins" items="${adminsList}">
+							<tr>
+								<td><c:out value="${admins.username}"></c:out></td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
 			</div>
-			<div class="mb-3">
-				<form:label path="password">Password: </form:label>
-				<form:input type="password" path="password" class="form-control" />
-				<form:errors path="password" cssClass="text-danger" />
-			</div>
-			<div class="mb-3">
-				<form:label path="passwordConfirmation">Password Confirmation: </form:label>
-				<form:input type="password" path="passwordConfirmation"
-					class="form-control" />
-				<form:errors path="passwordConfirmation" cssClass="text-danger" />
-			</div>
-			<div class="mb-3 row">
-				<div class="col-5">
-					<input type="submit" value="Register" class="btn btn-primary" />
-				</div>
-				<div class="col-7">
-					<a class="btn btn-primary" href="/login-in">Already have an account? Log in</a>
-				</div>
-
-			</div>
-		</form:form>
 	</main>
-		<div class="footer mt-auto">
+	<div class="mt-auto footer">
 		<footer class="container py-3">
 			<div class="row">
 				<div class="col-md">
@@ -146,7 +225,6 @@
 			</div>
 		</footer>
 	</div>
-	
 	<script src="https://kit.fontawesome.com/6f2c5cc122.js"
 		crossorigin="anonymous"></script>
 	<script

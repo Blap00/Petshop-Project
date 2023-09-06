@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ page isErrorPage="true"%>
 <!DOCTYPE html>
 <html>
@@ -15,10 +16,11 @@
 	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 	crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="/css/MyStyleIndex3.css">
-<title>Little pets Shop || REGISTER</title>
+<title>Little pets Shop || LOGIN</title>
 </head>
 <body>
 	<header>
+		<!-- Barra de navegacion superior -->
 		<nav
 			class="navbar navbar-expand-lg navbar-light sticky-top navbarheader">
 			<div class="container-fluid divLogo">
@@ -34,15 +36,16 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarNavDropdown">
 				<ul class="navbar-nav me-auto">
-					<li class="nav-item"><a class="nav-link" aria-current="page"
-						href="/">Inicio</a></li>
+					<li class="nav-item"><a class="nav-link active"
+						aria-current="page" href="/">Inicio</a></li>
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" id="navbarDropdownMenuLink"
 						role="button" data-bs-toggle="dropdown" aria-expanded="false">
 							Galeria De articulos </a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 							<c:forEach var="category" items="${categorias}">
-								<li><a class="dropdown-item" href="category/${category.id }">${category.name}</a></li>
+								<li><a class="dropdown-item"
+									href="category/${category.id }">${category.name}</a></li>
 							</c:forEach>
 
 						</ul></li>
@@ -53,46 +56,126 @@
 					<li class="nav-item"><a class="nav-link" aria-current="page"
 						href="/seguimiento">Seguimiento</a></li>
 				</ul>
+				<div class="me-3">
+					<%
+					if (!(Boolean) request.getAttribute("estaLogueado")) {
+					%>
+					<a class="btn btn-light btn-outline-success" href="/login-in">Iniciar
+						Sesión</a>
+					<%
+					} else {
+					%>
+					<li class="d-flex nav-item dropdown"><a
+						class="nav-link btn btn-light dropdown-toggle text-black" href=""
+						id="userDropdownMenu" role="button" data-bs-toggle="dropdown"
+						aria-expanded="false"> Bienvenid@ ${user.username}</a>
+						<ul class="dropdown-menu" aria-labelledby="userDropdownMenu">
+							<!-- ... Opciones de menú ... -->
+							<li><a class="dropdown-item" href="/logout-in">Salir</a></li>
+							<li><a class="dropdown-item" href="#">Modificar Usuario</a></li>
+							<li><a class="dropdown-item" href="#">Configuración</a></li>
+						</ul></li>
+					<%
+					}
+					%>
+				</div>
+			</div>
 			</div>
 		</nav>
 	</header>
-	<main
-		class="container-fluid d-flex justify-content-center align-items-center form-login w-50">
-		<form:form accept-charset="UTF-8" action="/register/add" method="post"
-			modelAttribute="usuario" class="col-lg-6">
-			<div class="mb-3">
-				<form:label path="username">Username: </form:label>
-				<form:input path="username" class="form-control" />
-				<form:errors path="username" cssClass="text-danger" />
-			</div>
-			<div class="mb-3">
-				<form:label path="email">Email: </form:label>
-				<form:input path="email" class="form-control" />
-				<form:errors path="email" cssClass="text-danger" />
-			</div>
-			<div class="mb-3">
-				<form:label path="password">Password: </form:label>
-				<form:input type="password" path="password" class="form-control" />
-				<form:errors path="password" cssClass="text-danger" />
-			</div>
-			<div class="mb-3">
-				<form:label path="passwordConfirmation">Password Confirmation: </form:label>
-				<form:input type="password" path="passwordConfirmation"
-					class="form-control" />
-				<form:errors path="passwordConfirmation" cssClass="text-danger" />
-			</div>
-			<div class="mb-3 row">
-				<div class="col-5">
-					<input type="submit" value="Register" class="btn btn-primary" />
-				</div>
-				<div class="col-7">
-					<a class="btn btn-primary" href="/login-in">Already have an account? Log in</a>
-				</div>
+	<main>
+		<div class="container">
+			<h1>Lista de Valores</h1>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<c:forEach var="attribute"
+							items="${list[0].getClass().declaredFields}">
 
-			</div>
-		</form:form>
+							
+							<c:choose>
+							<c:when test="${attribute.name eq 'password'}">
+									<th colspan="2">${attribute.name}</th>
+							</c:when>
+
+							<c:when test="${attribute.name eq 'passwordConfirmation'}">
+							</c:when>
+							<c:when test="${attribute.name eq 'updatedAt'}">
+							</c:when>
+							<c:when test="${attribute.name eq 'lastLogoutDate'}">
+							</c:when>
+							<c:otherwise>
+								<th>${attribute.name}</th>
+							</c:otherwise>
+							</c:choose>
+						</c:forEach>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach var="item" items="${list}">
+						<tr>
+
+							<c:forEach var="attribute"
+								items="${item.getClass().declaredFields}">
+								<td><c:set var="fieldName" value="${attribute.name}" /> <c:set
+										var="getterMethodName"
+										value="get${fieldName.substring(0, 1).toUpperCase()}${fieldName.substring(1)}" />
+									<c:choose>
+										<c:when test="${attribute.type.isArray()}">
+											<!-- Convert array to a comma-separated string -->
+											<c:set var="fieldValue" value="${item[getterMethodName]()}" />
+											<c:forEach var="element" items="${fieldValue}">
+												<c:if test="${not empty element}">
+													<c:out value="${element}" />
+													<c:if test="${!element.last}">, </c:if>
+												</c:if>
+											</c:forEach>
+										</c:when>
+										<c:otherwise>
+											<!-- Display non-array attributes directly -->
+											<c:choose>
+												<c:when test="${fieldName == 'catalogo'}">
+													<c:out value="${item.catalogo.name}" />
+												</c:when>
+												<c:when test="${fieldName == 'usuario'}">
+													<c:out value="${item.usuario.username}" />
+												</c:when>
+												<c:when test="${fieldName == 'password'}">
+													*************
+												</c:when>
+												<c:when test="${fieldName == 'product'}">
+													<c:forEach var="product" items="${item.product}">
+														<c:out value="${product.name }" />,
+													</c:forEach>
+												</c:when>
+												<c:when test="${fieldName =='boletas' }">
+													<c:forEach var="boletas" items="${item.boletas}">
+														<c:out value="${boletas.id}"/>,
+													</c:forEach>
+												</c:when>
+												<c:when test="${fieldName =='categoria' }">
+													<c:out value="${item.categoria.name }" />
+												</c:when>
+												
+												<c:when test="${fieldName == 'imagenes'}">
+													<img src="${item.imagenes}" style="height: 40px;">
+												</c:when>
+												<c:otherwise>
+													<c:out value="${item[getterMethodName]()}" />
+												</c:otherwise>
+											</c:choose>
+										</c:otherwise>
+									</c:choose></td>
+							</c:forEach>
+						</tr>
+					</c:forEach>
+
+				</tbody>
+			</table>
+
+		</div>
 	</main>
-		<div class="footer mt-auto">
+	<div class="mt-auto footer">
 		<footer class="container py-3">
 			<div class="row">
 				<div class="col-md">
@@ -146,12 +229,13 @@
 			</div>
 		</footer>
 	</div>
-	
 	<script src="https://kit.fontawesome.com/6f2c5cc122.js"
 		crossorigin="anonymous"></script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 		crossorigin="anonymous"></script>
+</body>
+</html>
 </body>
 </html>
