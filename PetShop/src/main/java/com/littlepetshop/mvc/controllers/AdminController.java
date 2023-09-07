@@ -65,7 +65,7 @@ public class AdminController {
 	    }
 	}
 
-
+	
 	@GetMapping("/showdata")
 	public String showValues(@RequestParam String redirect, Model model, HttpSession session) {
 		if (!"true".equals(session.getAttribute("staff"))) {
@@ -113,7 +113,11 @@ public class AdminController {
 	@GetMapping("/dashboard")
 	public String adminDashboard(Model model, HttpSession session) {
 		if (session.getAttribute("superstaff")=="true") {
+			model.addAttribute("superStaff", true);
+			List<Usuario> users = userService.getAllUsuarios();
+			model.addAttribute("users", users);
 		}else if(session.getAttribute("staff")=="true"){
+			model.addAttribute("superStaff", false);
 		}else {
 			return "redirect:/";
 		}
@@ -142,12 +146,6 @@ public class AdminController {
 		List<Product> productos = productService.findAll();
 		List<Usuario> admins = userService.getAllAdmins();
 		// SET ON LIST
-		if (session.getAttribute("superstaff") == "true") {
-			
-			model.addAttribute("superStaff", true);
-			List<Usuario> users = userService.getAllUsuarios();
-			model.addAttribute("users", users);
-		}
 		// GET LIST OF ADMINS;
 		model.addAttribute("adminsList", admins);
 
