@@ -26,8 +26,6 @@ public class Usuario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	//testing git
 
 	@Size(min = 4, message = "El nombre del usuario debe contener sobre 4 digitos")
 	@Size(max = 45, message = "El nombre del usuario debe contener menos de 45 digitos")
@@ -45,15 +43,30 @@ public class Usuario {
 	private String password;
 	@Transient
 	private String passwordConfirmation;
-	
+
 	@NotNull
 	private boolean admin;
 
+	// se agregó el superadmin
+	@NotNull
+	private boolean superAdmin;
+
+	public boolean isSuperAdmin() {
+		return superAdmin;
+	}
+	public boolean getSuperAdmin() {
+		return superAdmin;
+	}
+
+	public void setSuperAdmin(boolean superAdmin) {
+		this.superAdmin = superAdmin;
+	}
+	
 	@OneToMany(mappedBy = "usuario")
 	private List<Boleta> boletas;
 
 	@OneToMany(mappedBy = "usuario")
-    private List<Solicitud> solicitudes;
+	private List<Solicitud> solicitudes;
 
 	@Column(updatable = false)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -62,18 +75,19 @@ public class Usuario {
 	private Date updatedAt;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date lastLogoutDate;
-
+	
 	public Usuario() {
 	}
-	
+
 	@PrePersist
-    protected void onCreate(){
-        this.createdAt = new Date();
-    }
-    @PreUpdate
-    protected void onUpdate(){
-        this.updatedAt = new Date();
-    }
+	protected void onCreate() {
+		this.createdAt = new Date();
+	}
+
+	@PreUpdate
+	protected void onUpdate() {
+		this.updatedAt = new Date();
+	}
 
 	public Long getId() {
 		return id;
@@ -122,6 +136,10 @@ public class Usuario {
 	public void setAdmin(boolean admin) {
 		this.admin = admin;
 	}
+	
+	public boolean getAdmin() {
+		return admin;
+	}
 
 	public List<Boleta> getBoleta() {
 		return boletas;
@@ -131,8 +149,6 @@ public class Usuario {
 		this.boletas = boleta;
 	}
 
-	
-	
 	public Date getCreatedAt() {
 		return createdAt;
 	}
@@ -164,5 +180,14 @@ public class Usuario {
 	public void setLastLogoutDate(Date lastLogoutDate) {
 		this.lastLogoutDate = lastLogoutDate;
 	}
+
+	public List<Boleta> getBoletas() {
+		return boletas;
+	}
+
+	public void setBoletas(List<Boleta> boletas) {
+		this.boletas = boletas;
+	}
+	
 
 }

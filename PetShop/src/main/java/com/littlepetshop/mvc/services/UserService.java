@@ -52,4 +52,14 @@ public class UserService {
 	    Usuario user = usuarioRepository.findByUsername(username);
 	    return user != null && password==passwordConf;
 	}
+    
+  //Renzo: agregue lo creado en el admin controller
+    public List<Usuario> getAllAdmins() {
+        return usuarioRepository.findByAdmin(true);
+    }
+
+    public Integer getTotalUsuarios() {
+        return Math.toIntExact(usuarioRepository.count());
+    }
+
 }

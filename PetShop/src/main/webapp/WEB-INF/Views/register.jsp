@@ -41,17 +41,10 @@
 						role="button" data-bs-toggle="dropdown" aria-expanded="false">
 							Galeria De articulos </a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-							<%-- IMPLEMENTAR UN CICLO DE FOR CON CADA CATEGORIA DE ARTICULOS --%>
-							<%--
-							for (int i = 0; i < categorias.size(); i++) {
-								Categoria categoria = categorias.get(i);
-							--%>
-							<!-- ARREGLAR y poner tamaño de categorias -->
-							<li><a class="dropdown-item"
-								href="/catalogo/${categoria.id}">${categoria.nombre}</a></li>
-							<%--
-							}
-							--%>
+							<c:forEach var="category" items="${categorias}">
+								<li><a class="dropdown-item" href="category/${category.id }">${category.name}</a></li>
+							</c:forEach>
+
 						</ul></li>
 					<li class="nav-item"><a class="nav-link" href="/quienes-somos">Quienes
 							somos</a></li>
@@ -99,7 +92,7 @@
 			</div>
 		</form:form>
 	</main>
-	<div class="footer mt-auto">
+		<div class="footer mt-auto">
 		<footer class="container py-3">
 			<div class="row">
 				<div class="col-md">
@@ -134,10 +127,6 @@
 							href="https://www.instagram.com/_._Blap_._/">@_._Blap_._</a></li>
 						<li><a class="text-muted"
 							href="https://www.instagram.com/renzogonzales19/">@renzogonzales19</a></li>
-						<li><a class="text-muted"
-							href="https://www.instagram.com/vixo_guimaraes23/">@vixo_guimaraes23</a></li>
-						<li><a class="text-muted"
-							href="https://www.instagram.com/meiikaren/">@meiikaren</a></li>
 					</ul>
 				</div>
 
@@ -157,6 +146,7 @@
 			</div>
 		</footer>
 	</div>
+	
 	<script src="https://kit.fontawesome.com/6f2c5cc122.js"
 		crossorigin="anonymous"></script>
 	<script
