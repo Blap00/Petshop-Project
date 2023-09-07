@@ -109,8 +109,8 @@ public class UserController {
 	@GetMapping("/logout-in")
 	public String redirectIndex(HttpSession session) {
 		session.removeAttribute("userId");
-		session.removeAttribute("staff");
-		session.removeAttribute("superstaff");
+		session.setAttribute("staff", "false");
+		session.setAttribute("superstaff","false");
 		
 		return "redirect:/";
 	}
