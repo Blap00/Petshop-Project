@@ -21,7 +21,7 @@
 			class="navbar navbar-expand-lg navbar-light sticky-top navbarheader">
 			<div class="container-fluid divLogo">
 				<img class="imgLogo01"
-					src="/img/logo4"
+					src="${pageContext.request.contextPath}/img/logo3.PNG"
 					alt="LittlepetshopLOGO">
 			</div>
 			<button class="navbar-toggler" type="button"
