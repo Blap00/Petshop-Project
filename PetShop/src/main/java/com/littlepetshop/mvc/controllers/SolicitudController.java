@@ -25,9 +25,7 @@ public class SolicitudController {
 
     // Controlador para mostrar el formulario de creación de solicitudes
     @GetMapping("/nueva")
-    public String mostrarFormularioSolicitud(Model model) {
-        // Puedes agregar cualquier modelo necesario para el formulario aquí
-        model.addAttribute("solicitud", new Solicitud());
+    public String mostrarFormularioSolicitud(Model model, @ModelAttribute("solicitud")Solicitud solicitud) {
         return "solicitud.jsp"; // Retornar la vista del formulario de solicitud
     }
 

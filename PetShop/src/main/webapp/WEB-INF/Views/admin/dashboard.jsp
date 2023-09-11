@@ -99,8 +99,7 @@
 								<td>
 									<form action="showdata" method="GET">
 										<input type="hidden" name="redirect" value="usuarios">
-										<button type="submit" class="btn btn-primary">Ver
-											Usuarios</button>
+										<button type="submit" class="btn btn-primary">Ver Usuarios</button>
 									</form>
 								</td>
 							</tr>
@@ -110,8 +109,7 @@
 							<td>
 								<form action="showdata" method="GET">
 									<input type="hidden" name="redirect" value="boletas">
-									<button type="submit" class="btn btn-primary">Ver
-										Boletas</button>
+									<button type="submit" class="btn btn-primary">Ver Boletas</button>
 								</form>
 							</td>
 						</tr>
@@ -120,8 +118,7 @@
 							<td>
 								<form action="showdata" method="GET">
 									<input type="hidden" name="redirect" value="categorias">
-									<button type="submit" class="btn btn-primary">Ver
-										Categorias</button>
+									<button type="submit" class="btn btn-primary">Ver Categorias</button>
 								</form>
 							</td>
 						</tr>
@@ -130,47 +127,25 @@
 							<td>
 								<form action="showdata" method="GET">
 									<input type="hidden" name="redirect" value="descuento">
-									<button type="submit" class="btn btn-primary">Ver
-										Descuentos</button>
+									<button type="submit" class="btn btn-primary">Ver Descuentos</button>
 								</form>
 							</td>
 						</tr>
 						<tr>
-							<div class="container mt-4">
-								<h3>Listado de Solicitudes</h3>
-								<table class="table">
-									<thead>
-										<tr>
-											<th>Usuario</th>
-											<th>Nombre del Producto</th>
-											<th>Email</th>
-											<th>Descripción</th>
-											<th>Archivo Adjunto</th>
-										</tr>
-									</thead>
-									<tbody>
-										<c:forEach var="solicitud" items="${solicitudList}">
-											<tr>
-												<td>${usuario.username}</td>
-												<td>${solicitud.name}</td>
-												<td>${solicitud.email}</td>
-												<td>${solicitud.description}</td>
-												<td><a
-													href="/ruta-del-archivo/${solicitud.archivoAdjunto}"
-													target="_blank">Ver Archivo</a></td>
-											</tr>
-										</c:forEach>
-									</tbody>
-								</table>
-							</div>
+							<td>Solicitudes</td>
+							<td>
+								<form action="showdata" method="GET">
+									<input type="hidden" name="redirect" value="solicitudes">
+									<button type="submit" class="btn btn-primary">Ver Solicitudes</button>
+								</form>
+							</td>
 						</tr>
 						<tr>
 							<td>Productos</td>
 							<td>
 								<form action="showdata" method="GET">
 									<input type="hidden" name="redirect" value="productos">
-									<button type="submit" class="btn btn-primary">Ver
-										Productos</button>
+									<button type="submit" class="btn btn-primary">Ver Productos</button>
 								</form>
 							</td>
 						</tr>

@@ -14,25 +14,28 @@
 <body>
     <div class="container mt-5">
         <h1>Crear Solicitud</h1>
-        <form action="/solicitudes/crear" method="post" enctype="multipart/form-data">
+        <form:form action="/solicitudes/crear" method="POST" modelAttribute="solicitud"  enctype="multipart/form-data">
             <div class="mb-3">
-                <label for="name" class="form-label">Nombre:</label>
-                <input type="text" class="form-control" id="name" name="name" required>
+            	<form:label path="name">Nombre: </form:label>
+            	<form:input path="name" class="form-control"/>
+            	<form:errors path="name" cssClass="text-danger" />
             </div>
             <div class="mb-3">
-                <label for="email" class="form-label">Correo Electrónico:</label>
-                <input type="email" class="form-control" id="email" name="email" required>
+            	<form:label path="email">Correo Electrónico: </form:label>
+            	<form:input path="email" class="form-class"/>
+            	<form:errors path="email" cssClass="text-danger" />
             </div>
             <div class="mb-3">
-                <label for="description" class="form-label">Descripción:</label>
-                <textarea class="form-control" id="description" name="description" required></textarea>
+	            <form:label path="description">Descripción: </form:label>
+            	<form:textarea path="description" class="form-class"/>
+            	<form:errors path="description" cssClass="text-danger" />
             </div>
             <div class="mb-3">
                 <label for="archivoAdjunto" class="form-label">Archivo Adjunto:</label>
                 <input type="file" class="form-control" id="archivoAdjunto" name="archivoAdjunto">
             </div>
-            <button type="submit" class="btn btn-primary">Crear Solicitud</button>
-        </form>
+            <input type="submit" value="Crear Solicitud" class="btn btn-primary" />
+        </form:form>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
