@@ -15,9 +15,20 @@
 	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 	crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="/css/MyStyleIndex3.css">
+<link href="/css/font.scss" type="text/css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=League+Spartan&display=swap" rel="stylesheet"> 
+<style>
+:root{
+  --bs-body-font-family: 'League Spartan',!important;
+   
+}
+.body{
+  font-family: 'League Spartan', !important;
+} 
+</style>
 <title>Little pets Shop || LOGIN</title>
 </head>
-<body>
+<body class="body">
 	<header>
 		<!-- Barra de navegacion superior -->
 		<nav

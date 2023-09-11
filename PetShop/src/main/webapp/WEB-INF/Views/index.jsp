@@ -12,6 +12,9 @@
 	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 	crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="/css/MyStyleIndex3.css">
+<link href="https://fonts.googleapis.com/css?family=League+Spartan&display=swap" rel="stylesheet"> 
+<link href="/css/font.scss" type="text/css" rel="stylesheet">
+
 <title>Little pets Shop || INICIO</title>
 </head>
 <body>
@@ -36,6 +39,7 @@
 						aria-current="page" href="/">Inicio</a></li>
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" id="navbarDropdownMenuLink"
+						class="league-spartan"
 						role="button" data-bs-toggle="dropdown" aria-expanded="false">
 							Galeria De articulos </a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -93,7 +97,7 @@
 				<div class="carousel-inner">
 					<div class="carousel-item active">
 						<img alt="..." class="d-block w-100"
-							src="img/Carrusel/1gato1200x720.jpg">
+							src="img/Carrusel/FondoCarrusel.png">
 						<div style="border-radius: 25px; background: rgba(0, 0, 0, 0.5);"
 							class="carousel-caption">
 							<h5 class="animated fadeInDown" style="animation-delay: 1s">Articulos
@@ -108,7 +112,7 @@
 					</div>
 					<div class="carousel-item">
 						<img alt="..." class=" d-block w-100"
-							src="img/Carrusel/2perros1200x720.jpg">
+							src="img/Carrusel/FondoCarrusel2.png">
 						<div style="border-radius: 25px; background: rgba(0, 0, 0, 0.5);"
 							class="carousel-caption">
 							<h5 class="animated fadeInDown" style="animation-delay: 1s">Articulos
@@ -124,7 +128,7 @@
 					</div>
 					<div class="carousel-item">
 						<img alt="..." class="d-block w-100"
-							src="img/Carrusel/3pajaros1200x720.jpg">
+							src="img/Carrusel/FondoCarrusel3.png">
 						<div style="border-radius: 25px; background: rgba(0, 0, 0, 0.5);"
 							class="carousel-caption d-none d-md-block">
 							<h5 class="animated fadeInDown" style="animation-delay: 1s">¿Deseas
