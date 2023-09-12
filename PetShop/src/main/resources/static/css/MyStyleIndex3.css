@@ -38,11 +38,13 @@
 div ul li a{
 	font-size: 1.2rem;
 } 
+
 .navbar-light .navbar-nav .nav-link {
   color: rgb(0, 0, 0);
 }
+
 .footer{
-	background-color: #FCE36D;
+  background-color: #FCE36D;
 }
 .form-login{
 	min-height: calc(88vh - 205px);
@@ -61,6 +63,8 @@ div ul li a{
     left: 0;
     bottom: 0;
     right: 0;
+    background: rgb(0, 0, 0);
+    opacity: 0.3;
 }
 
  /*-- responsive del mapa */

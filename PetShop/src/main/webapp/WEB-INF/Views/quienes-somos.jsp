@@ -15,16 +15,15 @@
 <link href="https://fonts.googleapis.com/css?family=League+Spartan&display=swap" rel="stylesheet"> 
 <link href="/css/font.scss" type="text/css" rel="stylesheet">
 
-<title>Little pets Shop || INICIO</title>
+<title>Little pets Shop || Quienes Somos</title>
 </head>
 <body>
-	<header>
-		<!-- Barra de navegacion superior -->
+		<header><!-- Barra de navegacion superior -->
 		<nav
 			class="navbar navbar-expand-lg navbar-light sticky-top navbarheader">
 			<div class="container-fluid divLogo">
 				<img class="imgLogo01"
-					src="${pageContext.request.contextPath}/img/logo3.PNG"
+					src="${pageContext.request.contextPath}/img/logo3.png"
 					alt="LittlepetshopLOGO">
 			</div>
 			<button class="navbar-toggler" type="button"
@@ -39,7 +38,6 @@
 						aria-current="page" href="/">Inicio</a></li>
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" id="navbarDropdownMenuLink"
-						class="league-spartan"
 						role="button" data-bs-toggle="dropdown" aria-expanded="false">
 							Galeria De articulos </a>
 						<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -53,107 +51,10 @@
 					<li class="nav-item"><a class="nav-link" aria-current="page"
 						href="/catalogo">Catalogo</a></li>
 				</ul>
-				<div class="me-3">
-					<%
-					if (!(Boolean) request.getAttribute("estaLogueado")) {
-					%>
-					<a class="btn btn-light btn-outline-success" href="/login-in">Iniciar
-						Sesión</a>
-					<%
-					} else {
-					%>
-					<li class="d-flex nav-item dropdown"><a
-						class="nav-link btn btn-light dropdown-toggle text-black" href=""
-						id="userDropdownMenu" role="button" data-bs-toggle="dropdown"
-						aria-expanded="false"> Bienvenid@ ${user.username}</a>
-						<ul class="dropdown-menu" aria-labelledby="userDropdownMenu">
-							<!-- ... Opciones de menú ... -->
-							<li><a class="dropdown-item" href="/logout-in">Salir</a></li>
-							<li><a class="dropdown-item" href="#">Modificar Usuario</a></li>
-							<li><a class="dropdown-item" href="#">Configuración</a></li>
-						</ul></li>
-					<%
-					}
-					%>
-				</div>
 			</div>
-
 		</nav>
 	</header>
-	<main>
-		<div class="container-fluid">
-			<div class="carousel slide carousel-fade" data-bs-ride="carousel"
-				id="carouselExampleIndicators">
-				<div class="carousel-indicators">
-					<button aria-label="Slide 1" class="active" data-bs-slide-to="0"
-						data-bs-target="#carouselExampleIndicators" type="button"></button>
-					<button aria-label="Slide 2" data-bs-slide-to="1"
-						data-bs-target="#carouselExampleIndicators" type="button"></button>
-					<button aria-label="Slide 3" data-bs-slide-to="2"
-						data-bs-target="#carouselExampleIndicators" type="button"></button>
-				</div>
-				<div class="carousel-inner">
-					<div class="carousel-item active">
-						<img alt="..." class="d-block w-100"
-							src="img/Carrusel/FondoCarrusel.png">
-						<div style="border-radius: 25px; background: rgba(0, 0, 0, 0.5);"
-							class="carousel-caption">
-							<h5 class="animated fadeInDown" style="animation-delay: 1s">Articulos
-								para Felinos</h5>
-							<p class="animated fadeInUp d-none d-md-block"
-								style="animation-delay: 2s">Revise nuestra Galeria con
-								Articulos para Gatos, especial para esos felinos regalones.</p>
-							<p class="animated fadeInUp" style="animation-delay: 3s">
-								Haz click <a href="/categorias" style="color: #FFFFFF">aqui</a>
-							</p>
-						</div>
-					</div>
-					<div class="carousel-item">
-						<img alt="..." class=" d-block w-100"
-							src="img/Carrusel/FondoCarrusel2.png">
-						<div style="border-radius: 25px; background: rgba(0, 0, 0, 0.5);"
-							class="carousel-caption">
-							<h5 class="animated fadeInDown" style="animation-delay: 1s">Articulos
-								para Perros</h5>
-							<p class="animated fadeInUp d-none d-md-block"
-								style="animation-delay: 2s">Revise nuestra Galeria especial
-								para caninos, todo tipo de articulos para estos maravillosos
-								animales.</p>
-							<p class="animated fadeInUp" style="animation-delay: 3s">
-								Haz click <a href="/categorias" style="color: #FFFFFF">aqui</a>
-							</p>
-						</div>
-					</div>
-					<div class="carousel-item">
-						<img alt="..." class="d-block w-100"
-							src="img/Carrusel/FondoCarrusel3.png">
-						<div style="border-radius: 25px; background: rgba(0, 0, 0, 0.5);"
-							class="carousel-caption d-none d-md-block">
-							<h5 class="animated fadeInDown" style="animation-delay: 1s">¿Deseas
-								ver nuestros productos para aves?</h5>
-							<p class="animated fadeInUp d-none d-md-block"
-								style="animation-delay: 2s">Aparte de productos para caninos
-								y felinos tenemos para nuestras veloces y tiernas Aves</p>
-							<p class="animated fadeInUp" style="animation-delay: 3s">
-								Haz click <a href="/categorias" style="color: #FFFFFF">aqui</a>
-							</p>
-						</div>
-					</div>
-				</div>
-				<button class="carousel-control-prev" data-bs-slide="prev"
-					data-bs-target="#carouselExampleIndicators" type="button">
-					<span aria-hidden="true" class="carousel-control-prev-icon"></span>
-					<span class="visually-hidden">Previous</span>
-				</button>
-				<button class="carousel-control-next" data-bs-slide="next"
-					data-bs-target="#carouselExampleIndicators" type="button">
-					<span aria-hidden="true" class="carousel-control-next-icon"></span>
-					<span class="visually-hidden">Next</span>
-				</button>
-			</div>
-		</div>
-	</main>
-	<div class="mt-auto footer">
+    <div class="mt-auto footer">
 		<footer class="container py-3">
 			<div class="row">
 				<div class="col-md">
@@ -213,5 +114,5 @@
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 		crossorigin="anonymous"></script>
-</body>
-</html>
+        </body>
+        </html>

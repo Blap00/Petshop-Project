@@ -17,7 +17,6 @@
 	crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="/css/MyStyleIndex3.css">
 <link href="https://fonts.googleapis.com/css?family=League+Spartan&display=swap" rel="stylesheet"> 
-<link href="/css/font.scss" type="text/css" rel="stylesheet">
 
 <title>Little pets Shop || INICIO</title>
 <style>
@@ -35,9 +34,8 @@
 		<nav
 			class="navbar navbar-expand-lg navbar-light sticky-top navbarheader">
 			<div class="container-fluid divLogo">
-				<img class="imgLogo01"
-					src="${pageContext.request.contextPath}/img/logo3.png"
-					alt="LittlepetshopLOGO">
+				<img src="${pageContext.request.contextPath}/img/logo3.png" height="50px"
+				alt="Littlepetshop" class="imgLogo01">
 			</div>
 			<button class="navbar-toggler" type="button"
 				data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
@@ -200,7 +198,7 @@
 			<div class="row">
 				<div class="col-md">
 					<div class="text-center">
-						<a href="/"><img src="img/logo3.png" height="50px"
+						<a href="/"><img src="${pageContext.request.contextPath}/img/logo3.png" height="50px"
 							alt="Littlepetshop" class="imgLogo01"></a> <small
 							class="d-block text-muted">Fundacion Forge</small> <small
 							class="d-block text-muted">Coding Dojo Java Fullstack</small> <small
