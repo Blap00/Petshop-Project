@@ -16,7 +16,17 @@
 	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 	crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="/css/MyStyleIndex3.css">
+<link href="https://fonts.googleapis.com/css?family=League+Spartan&display=swap" rel="stylesheet"> 
+
 <title>Little pets Shop || INICIO</title>
+<style>
+	.btn-success {
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    color: #fff;
+    background-color: #72C1E0;
+    border-color: #72C1E0;
+}
+</style>
 </head>
 <body>
 	<header>
@@ -24,9 +34,8 @@
 		<nav
 			class="navbar navbar-expand-lg navbar-light sticky-top navbarheader">
 			<div class="container-fluid divLogo">
-				<img class="imgLogo01"
-					src="${pageContext.request.contextPath}/img/logo3.png"
-					alt="LittlepetshopLOGO">
+				<img src="${pageContext.request.contextPath}/img/logo3.png" height="50px"
+				alt="Littlepetshop" class="imgLogo01">
 			</div>
 			<button class="navbar-toggler" type="button"
 				data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
@@ -62,10 +71,16 @@
 							somos</a></li>
 					<li class="nav-item"><a class="nav-link" aria-current="page"
 						href="/catalogo">Catalogo</a></li>
-					<li class="nav-item"><a class="nav-link" aria-current="page"
-						href="/seguimiento">Seguimiento</a></li>
+
+						<li class="nav-item">
+							<form action="/solicitudes/nueva" method="get">
+								<input type="submit" value="Crear Solicitud" class="btn btn-primary">
+							</form>
+						</li>
+
 
 				</ul>
+
 				<ul class="navbar-nav me-2">
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" id="navbarDropdownMenuLink"
@@ -113,7 +128,7 @@
 	</header>
 	<main>
 		<div>
-			<h5 class="display-3" style="margin-left: 1%; margin-top: 0;">Catalogo</h5>
+			<h5 class="display-3" style="text-align: center;">Catalogo</h5>
 		</div>
 
 		<div style="margin-top: 1%;">
@@ -190,7 +205,7 @@
 			<div class="row">
 				<div class="col-md">
 					<div class="text-center">
-						<a href="/"><img src="img/logo3.png" height="50px"
+						<a href="/"><img src="${pageContext.request.contextPath}/img/logo3.png" height="50px"
 							alt="Littlepetshop" class="imgLogo01"></a> <small
 							class="d-block text-muted">Fundacion Forge</small> <small
 							class="d-block text-muted">Coding Dojo Java Fullstack</small> <small

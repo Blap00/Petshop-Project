@@ -15,9 +15,32 @@
 	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 	crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="/css/MyStyleIndex3.css">
+<link href="/css/font.scss" type="text/css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=League+Spartan&display=swap" rel="stylesheet"> 
+<style>
+:root{
+  --bs-body-font-family: 'League Spartan',!important;
+   
+}
+.body{
+  font-family: 'League Spartan', !important;
+} 
+
+form a {
+    color: #ffffff;
+    background-color: #104D5E;
+	text-decoration: none;
+}
+.btn-primary {
+    color: #fff;
+    background-color: #FCE36D;
+    border-color: #FCE36D;
+}
+
+</style>
 <title>Little pets Shop || LOGIN</title>
 </head>
-<body>
+<body class="body">
 	<header>
 		<!-- Barra de navegacion superior -->
 		<nav
@@ -51,8 +74,6 @@
 							somos</a></li>
 					<li class="nav-item"><a class="nav-link" aria-current="page"
 						href="/catalogo">Catalogo</a></li>
-					<li class="nav-item"><a class="nav-link" aria-current="page"
-						href="/seguimiento">Seguimiento</a></li>
 				</ul>
 			</div>
 		</nav>
@@ -88,7 +109,12 @@
 				</div>
 
 			</div>
+			
 		</form:form>
+		<div class="imagenlogo" >
+				<img class="fondologin" src="${pageContext.request.contextPath}/img/logo3.PNG"
+				alt="LittlepetshopLOGOfondo">
+			</div>
 	</main>
 <div class="mt-auto footer">
 		<footer class="container py-3">

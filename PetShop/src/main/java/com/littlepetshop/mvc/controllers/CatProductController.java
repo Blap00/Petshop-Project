@@ -96,5 +96,20 @@ public class CatProductController {
 		model.addAttribute("descuentos", descuentos);
 		return "categoryID.jsp";
 	}
+	@GetMapping("/quienes-somos")
+	public String quienesSomos(Model model, HttpSession session) {
+		boolean estaLogueado = (session.getAttribute("userId") != null);    
+		if (estaLogueado) {
+			Long userId = (Long) session.getAttribute("userId");
+			Optional<Usuario> user = userService.getUsuarioById(userId);
+			if (user.isPresent()) {
+				model.addAttribute("user", user.get());
+			}
+		}
+
+		model.addAttribute("estaLogueado", estaLogueado);
+		
+		return "quienesSomos.jsp";
+	}
 
 }

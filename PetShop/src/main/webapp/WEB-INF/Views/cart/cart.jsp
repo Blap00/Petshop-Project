@@ -16,7 +16,16 @@
 	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 	crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="/css/MyStyleIndex3.css">
+<link href="https://fonts.googleapis.com/css?family=League+Spartan&display=swap" rel="stylesheet"> 
+<link href="/css/font.scss" type="text/css" rel="stylesheet">
 <title>Shopping List</title>
+<style>
+	.btn-primary {
+    color: #fff;
+    background-color: #FCE36D;
+    border-color: #FCE36D;
+	}
+</style>
 </head>
 <body>
 	<header>
@@ -141,7 +150,7 @@
 			<div class="row">
 				<div class="col-md">
 					<div class="text-center">
-						<a href="/"><img src="img/logo3.png" height="50px"
+						<a href="/"><img src="${pageContext.request.contextPath}/img/logo3.png" height="50px"
 							alt="Littlepetshop" class="imgLogo01"></a> <small
 							class="d-block text-muted">Fundacion Forge</small> <small
 							class="d-block text-muted">Coding Dojo Java Fullstack</small> <small
