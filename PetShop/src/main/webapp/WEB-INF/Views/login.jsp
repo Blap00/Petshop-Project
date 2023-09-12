@@ -25,6 +25,18 @@
 .body{
   font-family: 'League Spartan', !important;
 } 
+
+form a {
+    color: #ffffff;
+    background-color: #104D5E;
+	text-decoration: none;
+}
+.btn-primary {
+    color: #fff;
+    background-color: #FCE36D;
+    border-color: #FCE36D;
+}
+
 </style>
 <title>Little pets Shop || LOGIN</title>
 </head>
@@ -62,8 +74,6 @@
 							somos</a></li>
 					<li class="nav-item"><a class="nav-link" aria-current="page"
 						href="/catalogo">Catalogo</a></li>
-					<li class="nav-item"><a class="nav-link" aria-current="page"
-						href="/seguimiento">Seguimiento</a></li>
 				</ul>
 			</div>
 		</nav>
@@ -99,7 +109,12 @@
 				</div>
 
 			</div>
+			
 		</form:form>
+		<div class="imagenlogo" >
+				<img class="fondologin" src="${pageContext.request.contextPath}/img/logo3.PNG"
+				alt="LittlepetshopLOGOfondo">
+			</div>
 	</main>
 <div class="mt-auto footer">
 		<footer class="container py-3">

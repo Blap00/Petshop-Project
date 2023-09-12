@@ -15,6 +15,8 @@
 	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 	crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="/css/MyStyleIndex3.css">
+<link href="/css/font.scss" type="text/css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=League+Spartan&display=swap" rel="stylesheet"> 
 <title>Little pets Shop || REGISTER</title>
 </head>
 <body>
@@ -50,8 +52,6 @@
 							somos</a></li>
 					<li class="nav-item"><a class="nav-link" aria-current="page"
 						href="/catalogo">Catalogo</a></li>
-					<li class="nav-item"><a class="nav-link" aria-current="page"
-						href="/seguimiento">Seguimiento</a></li>
 				</ul>
 			</div>
 		</nav>
@@ -91,6 +91,9 @@
 
 			</div>
 		</form:form>
+		<div calss="imagenlogoregister">
+			<img src="${pageContext.request.contextPath}/img/RegisterFondo.png" alt="ImagenRegister"> 
+		</div>
 	</main>
 		<div class="footer mt-auto">
 		<footer class="container py-3">

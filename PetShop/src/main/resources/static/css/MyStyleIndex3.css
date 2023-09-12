@@ -4,9 +4,7 @@
   --bs-body-font-family: 'League Spartan';
    
 }
-.body{
-  font-family: 'League Spartan'!important;
-} 
+
 .btn{
   background-color: #FCE36D;
   border-radius: 30px;
@@ -16,10 +14,9 @@
       ease-in-out,box-shadow .15s
     ease-in-out;
 }
-.btn-primary{
-  border-color:#FCE36D ;
-}
+
 .btn-outline-success {
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   color: #ffffff;
     border-color: #FCE36D;
 }
@@ -114,7 +111,6 @@ div ul li a{
     height: 100%;
   }
 
-  .justify-content-center {
-    justify-content:start !important;
-}
+
+
 

@@ -52,8 +52,7 @@
 							somos</a></li>
 					<li class="nav-item"><a class="nav-link" aria-current="page"
 						href="/catalogo">Catalogo</a></li>
-					<li class="nav-item"><a class="nav-link" aria-current="page"
-						href="/seguimiento">Seguimiento</a></li>
+						
 				</ul>
 				<div class="me-3">
 					<%
