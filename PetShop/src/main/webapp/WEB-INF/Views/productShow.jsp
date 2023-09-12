@@ -48,6 +48,11 @@ width: 18rem;
 div h5.display-3#headerText {
 	text-align: center;
 }
+.btn-primary {
+    color: #fff;
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
 </style>
 </head>
 <body>
@@ -82,7 +87,12 @@ div h5.display-3#headerText {
 					<li class="nav-item"><a class="nav-link" href="/quienes-somos">Quienes
 							somos</a></li>
 					<li class="nav-item"><a class="nav-link active" aria-current="page"
-						href="/catalogo">Catalogo</a></li>	
+						href="/catalogo">Catalogo</a></li>
+						<li class="nav-item">
+							<form action="/solicitudes/nueva" method="get">
+								<input type="submit" value="Crear Solicitud" class="btn btn-primary">
+							</form>
+						</li>	
 				</ul>
 				<ul class="navbar-nav me-2">
 					<li class="nav-item dropdown"><a

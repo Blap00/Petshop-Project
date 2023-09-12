@@ -72,8 +72,15 @@
 					<li class="nav-item"><a class="nav-link" aria-current="page"
 						href="/catalogo">Catalogo</a></li>
 
+						<li class="nav-item">
+							<form action="/solicitudes/nueva" method="get">
+								<input type="submit" value="Crear Solicitud" class="btn btn-primary">
+							</form>
+						</li>
+
 
 				</ul>
+
 				<ul class="navbar-nav me-2">
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" id="navbarDropdownMenuLink"

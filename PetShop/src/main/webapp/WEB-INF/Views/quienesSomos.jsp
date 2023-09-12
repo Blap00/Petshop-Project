@@ -14,7 +14,12 @@
 <link rel="stylesheet" type="text/css" href="/css/MyStyleIndex3.css">
 <link href="https://fonts.googleapis.com/css?family=League+Spartan&display=swap" rel="stylesheet"> 
 <link href="/css/font.scss" type="text/css" rel="stylesheet">
+<style>
+	.card-img-top {
+    height: 200px;
 
+}
+</style>
 <title>Little pets Shop || Quienes Somos</title>
 </head>
 <body>
@@ -54,6 +59,107 @@
 			</div>
 		</nav>
 	</header>
+	<div class="container">
+		<div id="list-item-1" >
+		  <div style="padding-top: 5%;">
+			<div class="col-md-12 card border-4 border-dark rounded-3 overflow-hidden flex-md-row"> 
+			  <CENter>
+			  <h4>SÓBRE NOSOTROS</h4>
+			  
+			  <P>Little Pets Shop es una pequeña empresa formada por un grupo de amigos enfocados en el rubro de la venta de articulos de animales buscando el Bienestar Animal y diversion de este. En nuestro local ubicado en la ciudad de Santiago comuna Maipú producimos y conseguimos los materiales y productos que nos permiten asegurar la calidad que buscamos en los servicios que entregamos.</P></br>
+			  <p>En nuestros días de experiencia hemos realizado variados proyectos de decoración, bienestar, diversion de animales y sus entornos a diferentes empresas dentro de Santiago. Nos caracterizamos por entregar confianza y dedicación en la realización de nuestros proyectos</p></br>
+			  <p>Queremos que los productos a favor de los animales estén siempre presentes en nuestra rutina, para que sus propiedades y beneficios les ayuden a llevar una mejor calidad de vida.</p>
+			</CENter>
+			</div> 
+		  </div>
+		</div> 
+	  </div>
+	  <!-- cierre primera card -->
+	  
+	  
+	  <!-- segunda card: vision de empresa --> 
+	  <div class="container" style="padding-top: 5%;" id="list-item-2">
+		<article class="card border-4 border-dark rounded-3 overflow-hidden flex-md-row">
+		  <div class="col-img ">
+			<picture>
+			  <img src="${pageContext.request.contextPath}/img/VisiondelaEmpresa.webp" alt="" width="400px" height="300px" >
+			</picture>
+		  </div>
+		  <div class="col-text">
+			<div class="card-body text-start text-md-start  ">
+			  <h4  class="text-md-start">VISION DE LA EMPRESA</h4>
+			  <p>Nuestra visión como empresa, es ser una de las mejores compañías a nivel mundial y ser reconocidos por la gran selectividad que 
+				tenemos a la hora de elegir diferentes tipos de productos para nuestros animales
+			  </p>
+			</div>
+		  </div>
+		</article>
+	  </div>
+		<!-- cierre segunda card -->  
+	  
+	  <!-- tercera card: mision de la empresa --> 
+		<div class="container" style="padding-top: 5%;" id="list-item-3">
+		  <article class="card border-4 border-dark rounded-3 overflow-hidden flex-md-row">
+			<div class="col-img ">
+			  <picture>
+				<img src="${pageContext.request.contextPath}/img/MisiondelaEmpresa.webp" alt="" width="400px" height="300px">
+			  </picture>
+			</div>
+			<div class="col-text">
+			  <div class="card-body text-start text-md-start ">
+				<center>
+				<h4  class="text-md-start">MISION DE LA EMPRESA</h4>
+			  </center>
+				<p> Lograr crear un nombre, que represente la ayuda de crear un mundo más verde y empatico a nuestros animales, a través de la venta para la creación de espacios divertidos y tranquilos para nuestras mascotas con juguetes y accesorios unicos o poco vistas
+				  en el país.
+	  
+				   </p>
+			  </div>
+			</div>
+		  </article>
+	   </div>
+	  
+	  <!-- cierre tercera card -->
+	  
+	  <!-- cuarta card: conocenos --> 
+	  
+	  
+	  <div class="container" style="padding-top: 5%;">
+		<div class="card-group ">
+		  <div class="card border-1 border-dark">
+			<img src="${pageContext.request.contextPath}/img/Integrantes/FotoFabian.jpeg" class="card-img-top" alt="..." >
+			<div class="card-body">
+			  <h5 class="card-title">Fabian Palma</h5>
+			  <p class="card-text">Líder del proyecto Desempeño su papel como Programador FullStack</p>
+			</div>
+		  </div>
+		  <div class="card border-1 border-dark ">
+			<img src="${pageContext.request.contextPath}/img/Integrantes/FotoTomas.jpg" class="card-img-top" alt="...">
+			<div class="card-body">
+			  <h5 class="card-title">Tomás Hertz</h5>
+			  <p class="card-text">Investigador del P
+				Desempeño su papel como programador de Front-end</p>
+			</div>
+		  </div>
+		  <div class="card border-1 border-dark">
+			<img src="${pageContext.request.contextPath}/img/Integrantes/FotoRenzo.jpg" class="card-img-top" alt="...">
+			<div class="card-body">
+			  <h5 class="card-title">Renzo Gonzales</h5>
+			  <p class="card-text">Colaborador polifacético
+				Desempeño su papel como programador de Front-end</p>
+			</div>
+		  </div>
+		  <div class="card border-1 border-dark">
+			<img src="${pageContext.request.contextPath}/img/Integrantes/FotoIsis.jpg" class="card-img-top" alt="...">
+			<div class="card-body">
+			  <h5 class="card-title">Isis Cea</h5>
+			  <p class="card-text">A. Marketing
+				Desempeño su papel como programador de Front-end</p>
+			</div>
+		  </div>
+		</div>
+	  </div>
+		<!-- cierre cuarta card -->
     <div class="mt-auto footer">
 		<footer class="container py-3">
 			<div class="row">
