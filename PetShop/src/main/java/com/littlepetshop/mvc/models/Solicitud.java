@@ -38,7 +38,6 @@ public class Solicitud {
 	@Size(max=90, message="El correo debe tener como maximo de 90 caracteres")
 	private String email;
 	
-	@NotNull
 	private String description;
 	
 	@Transient
@@ -89,15 +88,26 @@ public class Solicitud {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
 
-	public String getDescript() {
+	public String getDescription() {
 		return description;
 	}
-
-	public void setDescript(String descripciones) {
-		this.description = descripciones;
+	public void setDescription(String description) {
+		this.description = description;
 	}
-
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
+	public Date getUpdatedAt() {
+		return updatedAt;
+	}
+	public void setUpdatedAt(Date updatedAt) {
+		this.updatedAt = updatedAt;
+	}
 	public MultipartFile getArchivoAdjunto() {
 		return archivoAdjunto;
 	}
