@@ -88,8 +88,8 @@
 		  <div class="col-text">
 			<div class="card-body text-start text-md-start  ">
 			  <h4  class="text-md-start">VISION DE LA EMPRESA</h4>
-			  <p>Nuestra visión como empresa, es ser una de las mejores compañías a nivel mundial y ser reconocidos por la gran selectividad que 
-				tenemos a la hora de elegir diferentes tipos de productos para nuestros animales
+			  <p>Nuestra visión, es crear un entorno en línea, que sea un punto de encuentro entre vendedores y compradores. Creemos en que cada persona merece tener oportunidades de negocio.
+				
 			  </p>
 			</div>
 		  </div>
@@ -110,8 +110,7 @@
 				<center>
 				<h4  class="text-md-start">MISION DE LA EMPRESA</h4>
 			  </center>
-				<p> Lograr crear un nombre, que represente la ayuda de crear un mundo más verde y empatico a nuestros animales, a través de la venta para la creación de espacios divertidos y tranquilos para nuestras mascotas con juguetes y accesorios unicos o poco vistas
-				  en el país.
+				<p> Como equipo, sabemos lo dificil que es encontrar todo lo que quieras en un mismo sitio. Queremos entregarte de diversas fuentes ese producto que tanto buscas.
 	  
 				   </p>
 			  </div>
