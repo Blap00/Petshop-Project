@@ -109,7 +109,7 @@ public class CatProductController {
 
 		model.addAttribute("estaLogueado", estaLogueado);
 		
-		return "categoryID.jsp";
+		return "quienesSomos.jsp";
 	}
 
 }
