@@ -74,7 +74,7 @@
 		  </div>
 		</div> 
 	  </div>
-	  <!-- cierre primera card -->
+	  <!-- cierre primera cardddd -->
 	  
 	  
 	  <!-- segunda card: vision de empresa --> 
