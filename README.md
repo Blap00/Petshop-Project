@@ -82,7 +82,7 @@ spring.mvc.hiddenmethod.filter.enabled=true
 <hr>
 
 ## USO
-Una vez que la aplicación esté en funcionamiento, puedes acceder a ella a través de tu navegador web utilizando la dirección http://localhost:8080 (o la dirección IP correspondiente si estás en un entorno diferente). La aplicación Little Petshop te permitirá administrar tu inventario de productos para mascotas, gestionar ventas y realizar un seguimiento de las transacciones. Asegúrate de proporcionar instrucciones detalladas sobre cómo utilizar las funciones específicas de tu aplicación en esta sección del README.
+Una vez que la aplicación esté en funcionamiento, puedes acceder a ella a través de tu navegador web utilizando la dirección http://localhost:8080 (o la dirección IP correspondiente si estás en un entorno diferente). La aplicación Little Petshop te permitirá administrar tu inventario de productos para mascotas, gestionar ventas y realizar un seguimiento de las transacciones.
 
 <hr>
 
