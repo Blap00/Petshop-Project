@@ -66,7 +66,7 @@ Antes de comenzar con Little Petshop, asegúrate de tener instalados los siguien
 <hr>
 
 ```properties
-spring.datasource.url=jdbc:oracle:thin:@<TLS-STRING>
+spring.datasource.url=jdbc:Mysql://<direccionBBDD>
 spring.datasource.username=<USUARIO>
 spring.datasource.password=<CONTRASENNA>
 spring.jpa.hibernate.ddl-auto=update
