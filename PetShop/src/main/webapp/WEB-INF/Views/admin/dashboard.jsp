@@ -5,7 +5,6 @@
 <%@ page isErrorPage="true"%>
 <!DOCTYPE html>
 <html>
-<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Bootstrap CSS -->
@@ -15,7 +14,15 @@
 	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 	crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="/css/MyStyleIndex3.css">
+<link href="https://fonts.googleapis.com/css?family=League+Spartan&display=swap" rel="stylesheet"> 
+<link href="/css/font.scss" type="text/css" rel="stylesheet">
 <title>Little pets Shop || LOGIN</title>
+<style>
+	.btn-primary {
+    color: #fff;
+    border-color: #FCE36D;
+}
+</style>
 </head>
 <body>
 	<header>
@@ -24,7 +31,7 @@
 			class="navbar navbar-expand-lg navbar-light sticky-top navbarheader">
 			<div class="container-fluid divLogo">
 				<img class="imgLogo01"
-					src="${pageContext.request.contextPath}/img/logo3.png"
+					src="${pageContext.request.contextPath}/img/logo3.PNG"
 					alt="LittlepetshopLOGO">
 			</div>
 			<button class="navbar-toggler" type="button"
@@ -176,7 +183,7 @@
 			<div class="row">
 				<div class="col-md">
 					<div class="text-center">
-						<a href="/"><img src="img/logo3.png" height="50px"
+						<a href="/"><img src="${pageContext.request.contextPath}/img/logo3.PNG" height="50px"
 							alt="Littlepetshop" class="imgLogo01"></a> <small
 							class="d-block text-muted">Fundacion Forge</small> <small
 							class="d-block text-muted">Coding Dojo Java Fullstack</small> <small

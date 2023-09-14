@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-PetShopApplication<PetShop>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.littlepetshop.mvc.PetShopApplication",
+            "projectName": "PetShop",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
